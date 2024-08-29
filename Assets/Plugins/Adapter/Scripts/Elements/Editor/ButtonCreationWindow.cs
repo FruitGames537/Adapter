@@ -91,14 +91,14 @@ namespace Adapter.Elements.Editor
 			m_PositionValue = Vector3.zero;
 			m_SizeValue = new Vector2(160, 30);
 			m_RotationValue = Vector3.zero;
-			m_SpriteValue = null;
+			m_SpriteValue = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Plugins/Adapter/Sprites/Raster/Small/Round128.png");
 			m_ColorValue = Color.white;
 			m_TransitionValue = Selectable.Transition.ColorTint;
 			m_ColorBlockValue = ColorBlock.defaultColorBlock;
 			m_SpriteStateValue = new SpriteState();
 			m_AnimationValue = new AnimationTriggers();
 			m_TextValue = "Adaptive Button";
-			m_FontValue = null;
+			m_FontValue = AssetDatabase.LoadAssetAtPath<Font>("Assets/Plugins/Adapter/Fonts/Arial/Regular.ttf");
 			m_FontStyleValue = FontStyle.Normal;
 			m_FontSizeValue = 16;
 			m_FontSpacingValue = 1;

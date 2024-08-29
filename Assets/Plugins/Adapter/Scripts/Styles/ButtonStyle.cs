@@ -1,67 +1,65 @@
+using Adapter.Elements;
 using System;
 using UnityEngine;
-using UnityEngine.UI;
+using UI = UnityEngine.UI;
 
 namespace Adapter.Styles
 {
 	[Serializable]
 	public class ButtonStyle : IStyle<Button>
 	{
-		public ButtonStyle()
-		{
-			m_Transition = Selectable.Transition.ColorTint;
-			m_Color = ColorBlock.defaultColorBlock;
-			m_Sprite = new SpriteState();
-			m_Animation = new AnimationTriggers();
-		}
+		private ButtonStyle(UI.Selectable.Transition transition) => m_Transition = transition;
+		public ButtonStyle(ColorBlock color) : this(UI.Selectable.Transition.ColorTint) => m_Color = color;
+		public ButtonStyle(UI.SpriteState sprite) : this(UI.Selectable.Transition.SpriteSwap) => m_Sprite = sprite;
+		public ButtonStyle(UI.AnimationTriggers animation) : this(UI.Selectable.Transition.Animation) => m_Animation = animation ?? new UI.AnimationTriggers();
 
 
 
-		[SerializeField] private Selectable.Transition m_Transition;
-		[SerializeField] private ColorBlock m_Color;
-		[SerializeField] private SpriteState m_Sprite;
-		[SerializeField] private AnimationTriggers m_Animation;
+		[SerializeField] private UI.Selectable.Transition m_Transition = UI.Selectable.Transition.ColorTint;
+		[SerializeField] private ColorBlock m_Color = ColorBlock.defaultColorBlock;
+		[SerializeField] private UI.SpriteState m_Sprite = new UI.SpriteState();
+		[SerializeField] private UI.AnimationTriggers m_Animation = new UI.AnimationTriggers();
 
-		public Selectable.Transition transition { get => m_Transition; set => m_Transition = value; }
+		public UI.Selectable.Transition transition { get => m_Transition; set => m_Transition = value; }
 		public ColorBlock? color {
 			get
 			{
-				if (m_Transition != Selectable.Transition.ColorTint)
+				if (m_Transition != UI.Selectable.Transition.ColorTint)
 					return null;
 				return m_Color;
 			}
 			set
 			{
-				if (m_Transition != Selectable.Transition.ColorTint)
-					throw new ArgumentException("Cannot set color block because transition mode not set to color tint");
+				if (m_Transition != UI.Selectable.Transition.ColorTint)
+					throw new ArgumentException("Transition mode is not set to color tint");
 				m_Color = value.Value;
 			}
 		}
-		public SpriteState? sprite {
+		public UI.SpriteState? sprite {
 			get
 			{
-				if (m_Transition != Selectable.Transition.SpriteSwap)
+				if (m_Transition != UI.Selectable.Transition.SpriteSwap)
 					return null;
 				return m_Sprite;
 			}
 			set
 			{
-				if (m_Transition != Selectable.Transition.SpriteSwap)
-					throw new ArgumentException("Cannot set color block because transition mode not set to sprite swap");
+				if (m_Transition != UI.Selectable.Transition.SpriteSwap)
+					throw new ArgumentException("Transition mode is not set to sprite swap");
 				m_Sprite = value.Value;
 			}
 		}
-		public AnimationTriggers animation {
+		public UI.AnimationTriggers animation {
 			get
 			{
-				if (m_Transition != Selectable.Transition.Animation)
+				if (m_Transition != UI.Selectable.Transition.Animation)
 					return null;
 				return m_Animation;
 			}
 			set
 			{
-				if (m_Transition != Selectable.Transition.Animation)
-					throw new ArgumentException("Cannot set color block because transition mode not set to animation");
+				if (m_Transition != UI.Selectable.Transition.Animation)
+					throw new ArgumentException("Transition mode is not set to animation");
 				m_Animation = value;
 			}
 		}
@@ -70,19 +68,21 @@ namespace Adapter.Styles
 
 		public void Apply(Button button)
 		{
+			if (button == null)
+				throw new NullReferenceException("Button reference does not refer to the button object");
 			button.transition = m_Transition;
 			switch (m_Transition)
 			{
-				case Selectable.Transition.ColorTint:
-					button.colors = m_Color;
+				case UI.Selectable.Transition.ColorTint:
+					button.colors = m_Color.Apply(button);
 					break;
-				case Selectable.Transition.SpriteSwap:
+				case UI.Selectable.Transition.SpriteSwap:
 					button.spriteState = m_Sprite;
 					break;
-				case Selectable.Transition.Animation:
+				case UI.Selectable.Transition.Animation:
 					button.animationTriggers = m_Animation;
 					break;
-				case Selectable.Transition.None:
+				case UI.Selectable.Transition.None:
 				default:
 					break;
 			}

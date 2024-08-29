@@ -17,24 +17,21 @@ namespace Adapter.Containers.Editor
 
 			EditorGUI.LabelField(new Rect(position.x, position.y, position.width, singleLine), label);
 
-			if (property.FindPropertyRelative("m_Key") is SerializedProperty keyProperty)
-				EditorGUI.PropertyField(new Rect(position.x, position.y += singleLine + spacing, position.width, EditorGUI.GetPropertyHeight(keyProperty)), keyProperty);
-			if (property.FindPropertyRelative("m_Value") is SerializedProperty valueProperty)
-				EditorGUI.PropertyField(new Rect(position.x, position.y += singleLine + spacing, position.width, EditorGUI.GetPropertyHeight(valueProperty)), valueProperty);
+			SerializedProperty keyProperty = property.FindPropertyRelative("m_Key");
+			EditorGUI.PropertyField(new Rect(position.x, position.y += singleLine + spacing, position.width, EditorGUI.GetPropertyHeight(keyProperty)), keyProperty);
+
+			SerializedProperty valueProperty = property.FindPropertyRelative("m_Value");
+			EditorGUI.PropertyField(new Rect(position.x, position.y += EditorGUI.GetPropertyHeight(keyProperty) + spacing, position.width, EditorGUI.GetPropertyHeight(valueProperty)), valueProperty);
 
 			EditorGUI.EndProperty();
 		}
 
 		public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
 		{
-			float height = singleLine + spacing;
+			float height = singleLine;
 
-			if (property.FindPropertyRelative("m_Key") is SerializedProperty keyProperty)
-				height += EditorGUI.GetPropertyHeight(keyProperty);
-			if (property.FindPropertyRelative("m_Value") is SerializedProperty valueProperty)
-				height += EditorGUI.GetPropertyHeight(valueProperty);
-			if (property.FindPropertyRelative("m_Key") is not null && property.FindPropertyRelative("m_Value") is not null)
-				height += spacing;
+			height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("m_Key")) + spacing;
+			height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("m_Value")) + spacing;
 
 			return height;
 		}

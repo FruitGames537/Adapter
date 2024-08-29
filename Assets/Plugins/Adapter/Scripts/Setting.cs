@@ -1,4 +1,5 @@
 using Adapter.Containers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -28,7 +29,7 @@ namespace Adapter
 
 		public Theme currentTheme => m_ThemeName != null && m_Themes.Exists(item => item.name == m_ThemeName) ? m_Themes.Find(item => item.themeName == m_ThemeName) : m_Theme;
 		public int themeIndex => themeNames.IndexOf(m_ThemeName);
-		public List<string> themeNames => (List<string>)m_Themes.Select(item => item.themeName);
+		public List<string> themeNames => m_Themes.Select(item => item.themeName).ToList();
 
 		public delegate void ThemeChangedHandler(string theme, bool emptyName);
 		public event ThemeChangedHandler ThemeChanged;
@@ -48,8 +49,8 @@ namespace Adapter
 		public Language language => m_Language;
 
 		public Language currentLanguage => m_LanguageCode.HasValue && m_Languages.Exists(item => item.languageCode == m_LanguageCode) ? m_Languages.Find(item => item.languageCode == m_LanguageCode) : m_Language;
-		public int languageIndex => languageNames.IndexOf(m_LanguageCode.Value);
-		public List<SystemLanguage> languageNames => (List<SystemLanguage>)m_Languages.Select(item => item.languageCode);
+		public int languageIndex => languageCodes.IndexOf(m_LanguageCode.Value);
+		public List<SystemLanguage> languageCodes => m_Languages.Select(item => item.languageCode).ToList();
 
 		public delegate void LanguageChangedHandler(SystemLanguage? language, bool emptyCode);
 		public event LanguageChangedHandler LanguageChanged;
@@ -76,14 +77,16 @@ namespace Adapter
 		public void ChangeTheme(string theme)
 		{
 			if (!m_Themes.Exists(item => item.themeName == theme))
-				throw new KeyNotFoundException($"Cannot change theme beacause theme with this name not exist: \"{theme}\"");
+				throw new KeyNotFoundException($"There is no language with this name: \"{theme}\"");
 			m_ThemeName = theme;
 
 			ThemeChanged?.Invoke(m_ThemeName, m_ThemeName == null);
 		}
 		public void SetTheme(Theme theme)
 		{
-			m_ThemeName = null;
+			if (theme == null)
+				throw new NullReferenceException("Theme reference does not refer to the theme object");
+			m_ThemeName = themeNames.Exists(item => item == theme.themeName) ? themeNames.Find(item => item == theme.themeName) : null;
 			m_Theme = theme;
 
 			ThemeChanged?.Invoke(m_ThemeName, m_ThemeName == null);
@@ -92,16 +95,16 @@ namespace Adapter
 		public void SaveTheme()
 		{
 			if (m_ThemeName == null)
-				throw new KeyNotFoundException($"Cannot save theme beacause theme name not set");
+				throw new KeyNotFoundException("Theme name is not set");
 			PlayerPrefs.SetString(m_ThemePropertyName, m_ThemeName);
 			PlayerPrefs.Save();
 		}
 		public void LoadTheme()
 		{
 			if (!PlayerPrefs.HasKey(m_ThemePropertyName))
-				throw new KeyNotFoundException("Cannot load theme because theme name not save");
+				throw new KeyNotFoundException("Theme name is not save");
 			string name = PlayerPrefs.GetString(m_ThemePropertyName);
-			m_Theme = m_Themes.Find(item => item.themeName == name) ?? m_DefaultTheme;
+			SetTheme(m_Themes.Find(item => item.themeName == name) ?? m_DefaultTheme);
 		}
 
 		public void AddLanguage(Language language) => m_Languages.Add(language);
@@ -113,14 +116,16 @@ namespace Adapter
 		public void ChangeLanguage(SystemLanguage language)
 		{
 			if (!m_Languages.Exists(item => item.languageCode == language))
-				throw new KeyNotFoundException($"Cannot change language beacause language with this name not exist: \"{language}\"");
+				throw new KeyNotFoundException($"There is no language with this code: \"{language}\"");
 			m_LanguageCode = language;
 
 			LanguageChanged?.Invoke(m_LanguageCode.Value, !m_LanguageCode.HasValue);
 		}
 		public void SetLanguage(Language language)
 		{
-			m_LanguageCode = null;
+			if (language == null)
+				throw new NullReferenceException("Language reference does not refer to the language object");
+			m_LanguageCode = languageCodes.Exists(item => item == language.languageCode) ? languageCodes.Find(item => item == language.languageCode) : null;
 			m_Language = language;
 
 			LanguageChanged?.Invoke(m_LanguageCode, !m_LanguageCode.HasValue);
@@ -129,16 +134,16 @@ namespace Adapter
 		public void SaveLanguage()
 		{
 			if (!m_LanguageCode.HasValue)
-				throw new KeyNotFoundException($"Cannot save language beacause language code not set");
+				throw new KeyNotFoundException("Language code is not set");
 			PlayerPrefs.SetInt(m_LanguagePropertyName, (int)m_LanguageCode.Value);
 			PlayerPrefs.Save();
 		}
 		public void LoadLanguage()
 		{
 			if (!PlayerPrefs.HasKey(m_LanguagePropertyName))
-				throw new KeyNotFoundException("Cannot load language because language code not save");
+				throw new KeyNotFoundException("Language code is not save");
 			SystemLanguage code = (SystemLanguage)PlayerPrefs.GetInt(m_LanguagePropertyName);
-			m_Language = m_Languages.Find(item => item.languageCode == code) ?? m_DefaultLanguage;
+			SetLanguage(m_Languages.Find(item => item.languageCode == code) ?? m_DefaultLanguage);
 		}
 	}
 }

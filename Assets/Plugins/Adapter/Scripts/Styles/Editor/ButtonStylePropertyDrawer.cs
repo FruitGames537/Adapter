@@ -16,8 +16,9 @@ namespace Adapter.Styles.Editor
 		{
 			EditorGUI.BeginProperty(position, label, property);
 
-			EditorGUI.PropertyField(new Rect(position.x, position.y, position.width, singleLine), property.FindPropertyRelative("m_Transition"));
-			Selectable.Transition transition = (Selectable.Transition)property.FindPropertyRelative("m_Transition").intValue;
+			SerializedProperty transitionProperty = property.FindPropertyRelative("m_Transition");
+			EditorGUI.PropertyField(new Rect(position.x, position.y, position.width, singleLine), transitionProperty);
+			Selectable.Transition transition = (Selectable.Transition)transitionProperty.intValue;
 
 			if (transition is Selectable.Transition.ColorTint && property.FindPropertyRelative("m_Color") is SerializedProperty colorProperty)
 				EditorGUI.PropertyField(new Rect(position.x, position.y += singleLine + spacing, position.width, EditorGUI.GetPropertyHeight(colorProperty)), colorProperty);
@@ -31,15 +32,15 @@ namespace Adapter.Styles.Editor
 
 		public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
 		{
-			float height = singleLine + spacing;
+			float height = singleLine;
 
 			Selectable.Transition transition = (Selectable.Transition)property.FindPropertyRelative("m_Transition").intValue;
-			if (transition is Selectable.Transition.ColorTint && property.FindPropertyRelative("m_Color") is SerializedProperty colorProperty)
-				height += EditorGUI.GetPropertyHeight(colorProperty);
-			else if (transition is Selectable.Transition.SpriteSwap && property.FindPropertyRelative("m_Sprite") is SerializedProperty spriteProperty)
-				height += EditorGUI.GetPropertyHeight(spriteProperty);
-			else if (transition is Selectable.Transition.Animation && property.FindPropertyRelative("m_Animation") is SerializedProperty animationProperty)
-				height += EditorGUI.GetPropertyHeight(animationProperty);
+			if (transition is Selectable.Transition.ColorTint)
+				height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("m_Color")) + spacing;
+			else if (transition is Selectable.Transition.SpriteSwap)
+				height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("m_Sprite")) + spacing;
+			else if (transition is Selectable.Transition.Animation)
+				height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("m_Animation")) + spacing;
 
 			return height;
 		}

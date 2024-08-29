@@ -15,25 +15,27 @@ namespace Adapter.Styles.Editor
 		{
 			EditorGUI.BeginProperty(position, label, property);
 
-			EditorGUI.PropertyField(new Rect(position.x, position.y, position.width, singleLine), property.FindPropertyRelative("m_CustomSprite"));
-			bool customSprite = property.FindPropertyRelative("m_CustomSprite").boolValue;
+			SerializedProperty customSpriteProperty = property.FindPropertyRelative("m_CustomSprite");
+			EditorGUI.PropertyField(new Rect(position.x, position.y, position.width, singleLine), customSpriteProperty);
+			bool customSprite = customSpriteProperty.boolValue;
 
 			if (customSprite)
 				EditorGUI.PropertyField(new Rect(position.x, position.y += singleLine + spacing, position.width, singleLine), property.FindPropertyRelative("m_Sprite"));
 
-			EditorGUI.PropertyField(new Rect(position.x, position.y += singleLine + spacing, position.width, singleLine), property.FindPropertyRelative("m_Color"));
+			SerializedProperty colorProperty = property.FindPropertyRelative("m_Color");
+			EditorGUI.PropertyField(new Rect(position.x, position.y += singleLine + spacing, position.width, singleLine), colorProperty);
 
 			EditorGUI.EndProperty();
 		}
 
 		public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
 		{
-			float height = singleLine + spacing;
+			float height = singleLine;
 
 			bool customSprite = property.FindPropertyRelative("m_CustomSprite").boolValue;
 			if (customSprite)
 				height += singleLine + spacing;
-			height += singleLine;
+			height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("m_Color")) + spacing;
 
 			return height;
 		}

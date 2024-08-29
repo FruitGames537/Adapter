@@ -68,7 +68,7 @@ namespace Adapter.Elements.Editor
 			m_SizeValue = new Vector2(160, 30);
 			m_RotationValue = Vector3.zero;
 			m_TextValue = "Adaptive Text";
-			m_FontValue = null;
+			m_FontValue = AssetDatabase.LoadAssetAtPath<Font>("Assets/Plugins/Adapter/Fonts/Arial/Regular.ttf");
 			m_FontStyleValue = FontStyle.Normal;
 			m_FontSizeValue = 16;
 			m_FontSpacingValue = 1;

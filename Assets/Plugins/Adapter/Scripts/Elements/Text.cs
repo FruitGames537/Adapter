@@ -20,14 +20,10 @@ namespace Adapter.Elements
 
 		public void Modify()
 		{
-			if (m_Setting != null)
-			{
-				if (m_Setting.currentTheme.GetStyle<TextStyle>(m_Style) is TextStyle style)
-					style.Apply(this, m_Setting.languageCode);
-				m_Text = m_Setting.currentLanguage.GetTranslation(m_Translation) ?? m_Text;
-                SetVerticesDirty();
-                SetLayoutDirty();
-            }
+			if (m_Setting != null && m_Setting.currentTheme != null && m_Setting.currentTheme.GetStyle<TextStyle>(m_Style) is TextStyle style)
+				style.Apply(this, m_Setting.languageCode);
+			if (m_Setting != null && m_Setting.currentLanguage != null)
+				text = m_Setting.currentLanguage.GetTranslation(m_Translation) ?? m_Text;
 		}
 
 		private void OnChangeTheme(string theme, bool emptyName) => Modify();

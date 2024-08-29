@@ -16,7 +16,7 @@ namespace Adapter.Elements
 
 		public void Modify()
 		{
-			if (m_Setting != null && m_Setting.currentTheme.GetStyle<ButtonStyle>(m_Style) is ButtonStyle style)
+			if (m_Setting != null && m_Setting.currentLanguage != null && m_Setting.currentTheme.GetStyle<ButtonStyle>(m_Style) is ButtonStyle style)
 				style.Apply(this);
 		}
 
