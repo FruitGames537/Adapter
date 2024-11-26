@@ -15,8 +15,9 @@ namespace Adapter.Containers.Editor
 		{
 			EditorGUI.BeginProperty(position, label, property);
 
-			EditorGUI.PropertyField(new Rect(position.x, position.y, position.width, singleLine), property.FindPropertyRelative("m_Type"));
-			VariationType type = (VariationType)property.FindPropertyRelative("m_Type").intValue;
+			SerializedProperty typeProperty = property.FindPropertyRelative("m_Type");
+			EditorGUI.PropertyField(new Rect(position.x, position.y, position.width, singleLine), typeProperty);
+			VariationType type = (VariationType)typeProperty.intValue;
 
 			if (type is VariationType.One && property.FindPropertyRelative("m_OneValue") is SerializedProperty oneValueProperty)
 				EditorGUI.PropertyField(new Rect(position.x, position.y += singleLine + spacing, position.width, EditorGUI.GetPropertyHeight(oneValueProperty)), oneValueProperty, new GUIContent("Value"));
@@ -28,13 +29,13 @@ namespace Adapter.Containers.Editor
 
 		public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
 		{
-			float height = singleLine + spacing;
+			float height = singleLine;
 
 			VariationType type = (VariationType)property.FindPropertyRelative("m_Type").intValue;
 			if (type is VariationType.One && property.FindPropertyRelative("m_OneValue") is SerializedProperty oneValueProperty)
-				height += EditorGUI.GetPropertyHeight(oneValueProperty);
+				height += EditorGUI.GetPropertyHeight(oneValueProperty) + spacing;
 			else if (type is VariationType.Two && property.FindPropertyRelative("m_TwoValue") is SerializedProperty twoValueProperty)
-				height += EditorGUI.GetPropertyHeight(twoValueProperty);
+				height += EditorGUI.GetPropertyHeight(twoValueProperty) + spacing;
 
 			return height;
 		}

@@ -9,7 +9,7 @@ namespace Adapter.Containers
 		private Variation(T1 oneValue, T2 twoValue, Type storeType, VariationType type)
 		{
 			if (typeof(T1) == typeof(T2))
-				throw new ArgumentException("Cannot create variation because type one and type two not different");
+				throw new ArgumentException("First and second types are no different");
 			m_OneValue = oneValue;
 			m_TwoValue = twoValue;
 			m_StoreType = storeType;
@@ -75,7 +75,7 @@ namespace Adapter.Containers
 				else if (value is T2)
 					twoValue = (T2)value;
 				else
-					throw new InvalidOperationException("Cannot set value because value type is unacceptable variation type");
+					throw new InvalidOperationException("Value type is an unavailable type of variation");
 			}
 		}
 

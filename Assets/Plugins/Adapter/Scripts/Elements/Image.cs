@@ -16,7 +16,7 @@ namespace Adapter.Elements
 
 		public void Modify()
 		{
-			if (m_Setting != null && m_Setting.currentTheme.GetStyle<ImageStyle>(m_Style) is ImageStyle style)
+			if (m_Setting != null && m_Setting.currentTheme != null && m_Setting.currentTheme.GetStyle<ImageStyle>(m_Style) is ImageStyle style)
 				style.Apply(this);
 		}
 		

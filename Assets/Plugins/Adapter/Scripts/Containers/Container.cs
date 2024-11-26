@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Adapter.Containers
@@ -28,7 +28,7 @@ namespace Adapter.Containers
 					return container;
 				else if (GetStore(name) is TValue elementary)
 					return elementary;
-				throw new ArgumentException("Cannot get value because store unknown type");
+				throw new ArgumentException("Unable to get a value of unknown type");
 			}
 			set
 			{
@@ -36,7 +36,7 @@ namespace Adapter.Containers
 					SetContainer(name, container);
 				else if (value.value is TValue elementary)
 					SetStore(name, elementary);
-				throw new ArgumentException("Cannot set value because this type not support");
+				throw new ArgumentException("Unable to set a value of unknown type");
 			}
 		}
 
@@ -54,7 +54,7 @@ namespace Adapter.Containers
 			{
 				if (value is not null)
 					m_Value.value = value;
-				throw new ArgumentException("Cannot set not container value by container property");
+				throw new ArgumentException("Unable to set a non-container using the container property");
 			}
 		}
 		public TValue store
@@ -69,7 +69,7 @@ namespace Adapter.Containers
 			{
 				if (value is not null)
 					m_Value.value = value;
-				throw new ArgumentException("Cannot set unacceptable type value by store property");
+				throw new ArgumentException("Unable to set a value with an unacceptable type using the store property");
 			}
 		}
 

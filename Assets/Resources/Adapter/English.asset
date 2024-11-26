@@ -16,16 +16,163 @@ MonoBehaviour:
   m_Translations:
   - m_Key: demo
     m_Value:
-      m_OneValue: 
+      m_OneValue:
+        m_Translation: 
       m_TwoValue:
       - m_Key: menu
         m_Value:
-          m_OneValue: 
+          m_OneValue:
+            m_Translation: 
           m_TwoValue:
           - m_Key: title
             m_Value:
-              m_OneValue: Menu
+              m_OneValue:
+                m_Translation: Menu
               m_TwoValue: []
               m_Type: 1
+          - m_Key: setting
+            m_Value:
+              m_OneValue:
+                m_Translation: Settings
+              m_TwoValue: []
+              m_Type: 1
+          m_Type: 2
+      - m_Key: setting
+        m_Value:
+          m_OneValue:
+            m_Translation: 
+          m_TwoValue:
+          - m_Key: title
+            m_Value:
+              m_OneValue:
+                m_Translation: Settings
+              m_TwoValue: []
+              m_Type: 1
+          - m_Key: back
+            m_Value:
+              m_OneValue:
+                m_Translation: Back
+              m_TwoValue: []
+              m_Type: 1
+          - m_Key: language
+            m_Value:
+              m_OneValue:
+                m_Translation: 
+              m_TwoValue:
+              - m_Key: label
+                m_Value:
+                  m_OneValue:
+                    m_Translation: Language
+                  m_TwoValue: []
+                  m_Type: 1
+              - m_Key: english
+                m_Value:
+                  m_OneValue:
+                    m_Translation: English (English)
+                  m_TwoValue: []
+                  m_Type: 1
+              - m_Key: japanese
+                m_Value:
+                  m_OneValue:
+                    m_Translation: "Japanese (\u65E5\u672C\u8A9E)"
+                  m_TwoValue: []
+                  m_Type: 1
+              - m_Key: russian
+                m_Value:
+                  m_OneValue:
+                    m_Translation: "Russian (\u0420\u0443\u0441\u0441\u043A\u0438\u0439)"
+                  m_TwoValue: []
+                  m_Type: 1
+              m_Type: 2
+          - m_Key: theme
+            m_Value:
+              m_OneValue:
+                m_Translation: 
+              m_TwoValue:
+              - m_Key: label
+                m_Value:
+                  m_OneValue:
+                    m_Translation: Theme
+                  m_TwoValue: []
+                  m_Type: 1
+              - m_Key: light
+                m_Value:
+                  m_OneValue:
+                    m_Translation: Light
+                  m_TwoValue: []
+                  m_Type: 1
+              - m_Key: dark
+                m_Value:
+                  m_OneValue:
+                    m_Translation: Dark
+                  m_TwoValue: []
+                  m_Type: 1
+              - m_Key: custom
+                m_Value:
+                  m_OneValue:
+                    m_Translation: Custom
+                  m_TwoValue: []
+                  m_Type: 1
+              m_Type: 2
+          - m_Key: saving
+            m_Value:
+              m_OneValue:
+                m_Translation: 
+              m_TwoValue:
+              - m_Key: label
+                m_Value:
+                  m_OneValue:
+                    m_Translation: Saving
+                  m_TwoValue: []
+                  m_Type: 1
+              - m_Key: all
+                m_Value:
+                  m_OneValue:
+                    m_Translation: Save All
+                  m_TwoValue: []
+                  m_Type: 1
+              - m_Key: language
+                m_Value:
+                  m_OneValue:
+                    m_Translation: Save Language
+                  m_TwoValue: []
+                  m_Type: 1
+              - m_Key: theme
+                m_Value:
+                  m_OneValue:
+                    m_Translation: Save Theme
+                  m_TwoValue: []
+                  m_Type: 1
+              m_Type: 2
+          - m_Key: loading
+            m_Value:
+              m_OneValue:
+                m_Translation: 
+              m_TwoValue:
+              - m_Key: label
+                m_Value:
+                  m_OneValue:
+                    m_Translation: Loading
+                  m_TwoValue: []
+                  m_Type: 1
+              - m_Key: all
+                m_Value:
+                  m_OneValue:
+                    m_Translation: Load All
+                  m_TwoValue: []
+                  m_Type: 1
+              - m_Key: language
+                m_Value:
+                  m_OneValue:
+                    m_Translation: Load Language
+                  m_TwoValue: []
+                  m_Type: 1
+              - m_Key: theme
+                m_Value:
+                  m_OneValue:
+                    m_Translation: Load Theme
+                  m_TwoValue: []
+                  m_Type: 1
+              m_Type: 2
           m_Type: 2
       m_Type: 2

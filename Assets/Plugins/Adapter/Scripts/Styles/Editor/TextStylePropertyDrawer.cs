@@ -15,10 +15,11 @@ namespace Adapter.Styles.Editor
 		{
 			EditorGUI.BeginProperty(position, label, property);
 
-			SerializedProperty extraFontProperty = property.FindPropertyRelative("m_ExtraFont");
-
 			EditorGUI.PropertyField(new Rect(position.x, position.y, position.width, singleLine), property.FindPropertyRelative("m_Font"));
+
+			SerializedProperty extraFontProperty = property.FindPropertyRelative("m_ExtraFont");
 			EditorGUI.PropertyField(new Rect(position.x, position.y += singleLine + spacing, position.width, EditorGUI.GetPropertyHeight(extraFontProperty)), extraFontProperty);
+
 			EditorGUI.PropertyField(new Rect(position.x, position.y += EditorGUI.GetPropertyHeight(extraFontProperty) + spacing, position.width, singleLine), property.FindPropertyRelative("m_Style"));
 
 			EditorGUI.PropertyField(new Rect(position.x, position.y += singleLine + spacing, position.width, singleLine), property.FindPropertyRelative("m_Size"));
@@ -35,8 +36,8 @@ namespace Adapter.Styles.Editor
 		{
 			float height = singleLine * 6 + spacing * 5;
 
-			if (property.FindPropertyRelative("m_ExtraFont") is SerializedProperty extraFontProperty)
-				height += spacing + EditorGUI.GetPropertyHeight(extraFontProperty);
+			height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("m_ExtraFont")) + spacing;
+			height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("m_Color")) + spacing;
 
 			return height;
 		}
