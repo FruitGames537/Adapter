@@ -50,7 +50,7 @@ namespace Adapter.Styles
 			if (m_CustomSprite && image.setting != null && image.setting.currentTheme != null)
 				image.sprite = m_Sprite.variation is VariationType.First ? m_Sprite.firstValue : image.setting.currentTheme.GetSprite(m_Sprite.secondValue);
 			else if (m_CustomSprite)
-				image.sprite = null;
+				image.sprite = (Sprite)null;
 			if (image.setting != null && image.setting.currentTheme != null)
 				image.color = m_Color.variation is VariationType.First ? m_Color.firstValue : image.setting.currentTheme.GetColor(m_Color.secondValue);
 			else
