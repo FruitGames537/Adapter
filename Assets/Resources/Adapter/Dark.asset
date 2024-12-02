@@ -16,140 +16,140 @@ MonoBehaviour:
   m_Colors:
   - m_Key: theme
     m_Value:
-      m_OneValue: {r: 0, g: 0, b: 0, a: 0}
-      m_TwoValue:
+      m_FirstValue: {r: 0, g: 0, b: 0, a: 0}
+      m_SecondValue:
       - m_Key: base
         m_Value:
-          m_OneValue: {r: 0.13725491, g: 0.16078432, b: 0.21568628, a: 1}
-          m_TwoValue: []
-          m_Type: 1
+          m_FirstValue: {r: 0.13725491, g: 0.16078432, b: 0.21568628, a: 1}
+          m_SecondValue: []
+          m_Variation: 1
       - m_Key: primary
         m_Value:
-          m_OneValue: {r: 0, g: 0, b: 0, a: 0}
-          m_TwoValue:
+          m_FirstValue: {r: 0, g: 0, b: 0, a: 0}
+          m_SecondValue:
           - m_Key: one
             m_Value:
-              m_OneValue: {r: 0.3137255, g: 0.39215687, b: 0.46666667, a: 1}
-              m_TwoValue: []
-              m_Type: 1
+              m_FirstValue: {r: 0.3137255, g: 0.39215687, b: 0.46666667, a: 1}
+              m_SecondValue: []
+              m_Variation: 1
           - m_Key: two
             m_Value:
-              m_OneValue: {r: 0.4509804, g: 0.5647059, b: 0.6666667, a: 1}
-              m_TwoValue: []
-              m_Type: 1
+              m_FirstValue: {r: 0.4509804, g: 0.5647059, b: 0.6666667, a: 1}
+              m_SecondValue: []
+              m_Variation: 1
           - m_Key: three
             m_Value:
-              m_OneValue: {r: 0.5686275, g: 0.7058824, b: 0.8352941, a: 1}
-              m_TwoValue: []
-              m_Type: 1
+              m_FirstValue: {r: 0.5686275, g: 0.7058824, b: 0.8352941, a: 1}
+              m_SecondValue: []
+              m_Variation: 1
           - m_Key: four
             m_Value:
-              m_OneValue: {r: 0.6784314, g: 0.84313726, b: 1, a: 1}
-              m_TwoValue: []
-              m_Type: 1
+              m_FirstValue: {r: 0.6784314, g: 0.84313726, b: 1, a: 1}
+              m_SecondValue: []
+              m_Variation: 1
           - m_Key: five
             m_Value:
-              m_OneValue: {r: 0.89411765, g: 0.9411765, b: 0.9843137, a: 1}
-              m_TwoValue: []
-              m_Type: 1
-          m_Type: 2
+              m_FirstValue: {r: 0.89411765, g: 0.9411765, b: 0.9843137, a: 1}
+              m_SecondValue: []
+              m_Variation: 1
+          m_Variation: 2
       - m_Key: secondary
         m_Value:
-          m_OneValue: {r: 0, g: 0, b: 0, a: 0}
-          m_TwoValue:
+          m_FirstValue: {r: 0, g: 0, b: 0, a: 0}
+          m_SecondValue:
           - m_Key: one
             m_Value:
-              m_OneValue: {r: 0.15294118, g: 0.9098039, b: 0.654902, a: 1}
-              m_TwoValue: []
-              m_Type: 1
+              m_FirstValue: {r: 0.15294118, g: 0.9098039, b: 0.654902, a: 1}
+              m_SecondValue: []
+              m_Variation: 1
           - m_Key: two
             m_Value:
-              m_OneValue: {r: 0.19607843, g: 0.68235296, b: 0.52156866, a: 1}
-              m_TwoValue: []
-              m_Type: 1
+              m_FirstValue: {r: 0.19607843, g: 0.68235296, b: 0.52156866, a: 1}
+              m_SecondValue: []
+              m_Variation: 1
           - m_Key: three
             m_Value:
-              m_OneValue: {r: 0.25882354, g: 0.40392157, b: 0.3529412, a: 1}
-              m_TwoValue: []
-              m_Type: 1
-          m_Type: 2
+              m_FirstValue: {r: 0.25882354, g: 0.40392157, b: 0.3529412, a: 1}
+              m_SecondValue: []
+              m_Variation: 1
+          m_Variation: 2
       - m_Key: accent
         m_Value:
-          m_OneValue: {r: 0.8745098, g: 0.27058825, b: 0.4627451, a: 1}
-          m_TwoValue: []
-          m_Type: 1
-      m_Type: 2
+          m_FirstValue: {r: 0.8745098, g: 0.27058825, b: 0.4627451, a: 1}
+          m_SecondValue: []
+          m_Variation: 1
+      m_Variation: 2
   m_ImageStyles:
   - m_Key: demo
     m_Value:
-      m_OneValue:
+      m_FirstValue:
         m_CustomSprite: 0
         m_Sprite: {fileID: 0}
         m_Color:
-          m_OneValue: {r: 1, g: 1, b: 1, a: 1}
-          m_TwoValue: 
-          m_Type: 1
-      m_TwoValue:
+          m_FirstValue: {r: 1, g: 1, b: 1, a: 1}
+          m_SecondValue: 
+          m_Variation: 1
+      m_SecondValue:
       - m_Key: background
         m_Value:
-          m_OneValue:
+          m_FirstValue:
             m_CustomSprite: 0
             m_Sprite: {fileID: 0}
             m_Color:
-              m_OneValue: {r: 0, g: 0, b: 0, a: 1}
-              m_TwoValue: theme.base
-              m_Type: 2
-          m_TwoValue: []
-          m_Type: 1
+              m_FirstValue: {r: 0, g: 0, b: 0, a: 1}
+              m_SecondValue: theme.base
+              m_Variation: 2
+          m_SecondValue: []
+          m_Variation: 1
       - m_Key: setting
         m_Value:
-          m_OneValue:
+          m_FirstValue:
             m_CustomSprite: 0
             m_Sprite: {fileID: 0}
             m_Color:
-              m_OneValue: {r: 1, g: 1, b: 1, a: 1}
-              m_TwoValue: 
-              m_Type: 1
-          m_TwoValue:
+              m_FirstValue: {r: 1, g: 1, b: 1, a: 1}
+              m_SecondValue: 
+              m_Variation: 1
+          m_SecondValue:
           - m_Key: item
             m_Value:
-              m_OneValue:
+              m_FirstValue:
                 m_CustomSprite: 1
                 m_Sprite: {fileID: 21300000, guid: dac44cf9dfca9744f8112c7b505067f7, type: 3}
                 m_Color:
-                  m_OneValue: {r: 0, g: 0, b: 0, a: 1}
-                  m_TwoValue: theme.accent
-                  m_Type: 2
-              m_TwoValue: []
-              m_Type: 1
-          m_Type: 2
-      m_Type: 2
+                  m_FirstValue: {r: 0, g: 0, b: 0, a: 1}
+                  m_SecondValue: theme.accent
+                  m_Variation: 2
+              m_SecondValue: []
+              m_Variation: 1
+          m_Variation: 2
+      m_Variation: 2
   m_ButtonStyles:
   - m_Key: demo
     m_Value:
-      m_OneValue:
+      m_FirstValue:
         m_Transition: 0
         m_Color:
           m_NormalColor:
-            m_OneValue: {r: 0, g: 0, b: 0, a: 0}
-            m_TwoValue: 
-            m_Type: 0
+            m_FirstValue: {r: 0, g: 0, b: 0, a: 0}
+            m_SecondValue: 
+            m_Variation: 0
           m_HighlightedColor:
-            m_OneValue: {r: 0, g: 0, b: 0, a: 0}
-            m_TwoValue: 
-            m_Type: 0
+            m_FirstValue: {r: 0, g: 0, b: 0, a: 0}
+            m_SecondValue: 
+            m_Variation: 0
           m_PressedColor:
-            m_OneValue: {r: 0, g: 0, b: 0, a: 0}
-            m_TwoValue: 
-            m_Type: 0
+            m_FirstValue: {r: 0, g: 0, b: 0, a: 0}
+            m_SecondValue: 
+            m_Variation: 0
           m_SelectedColor:
-            m_OneValue: {r: 0, g: 0, b: 0, a: 0}
-            m_TwoValue: 
-            m_Type: 0
+            m_FirstValue: {r: 0, g: 0, b: 0, a: 0}
+            m_SecondValue: 
+            m_Variation: 0
           m_DisabledColor:
-            m_OneValue: {r: 0, g: 0, b: 0, a: 0}
-            m_TwoValue: 
-            m_Type: 0
+            m_FirstValue: {r: 0, g: 0, b: 0, a: 0}
+            m_SecondValue: 
+            m_Variation: 0
           m_ColorMultiplier: 0
           m_FadeDuration: 0
         m_Sprite:
@@ -163,32 +163,32 @@ MonoBehaviour:
           m_PressedTrigger: 
           m_SelectedTrigger: 
           m_DisabledTrigger: 
-      m_TwoValue:
+      m_SecondValue:
       - m_Key: button
         m_Value:
-          m_OneValue:
+          m_FirstValue:
             m_Transition: 1
             m_Color:
               m_NormalColor:
-                m_OneValue: {r: 1, g: 1, b: 1, a: 1}
-                m_TwoValue: 
-                m_Type: 1
+                m_FirstValue: {r: 1, g: 1, b: 1, a: 1}
+                m_SecondValue: 
+                m_Variation: 1
               m_HighlightedColor:
-                m_OneValue: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-                m_TwoValue: 
-                m_Type: 1
+                m_FirstValue: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+                m_SecondValue: 
+                m_Variation: 1
               m_PressedColor:
-                m_OneValue: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-                m_TwoValue: 
-                m_Type: 1
+                m_FirstValue: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+                m_SecondValue: 
+                m_Variation: 1
               m_SelectedColor:
-                m_OneValue: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-                m_TwoValue: 
-                m_Type: 1
+                m_FirstValue: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+                m_SecondValue: 
+                m_Variation: 1
               m_DisabledColor:
-                m_OneValue: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-                m_TwoValue: 
-                m_Type: 1
+                m_FirstValue: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+                m_SecondValue: 
+                m_Variation: 1
               m_ColorMultiplier: 1
               m_FadeDuration: 0.1
             m_Sprite:
@@ -202,112 +202,112 @@ MonoBehaviour:
               m_PressedTrigger: 
               m_SelectedTrigger: 
               m_DisabledTrigger: 
-          m_TwoValue: []
-          m_Type: 1
-      m_Type: 2
+          m_SecondValue: []
+          m_Variation: 1
+      m_Variation: 2
   m_TextStyles:
   - m_Key: demo
     m_Value:
-      m_OneValue:
+      m_FirstValue:
         m_Font: {fileID: 0}
-        m_ExtraFont: []
+        m_Extra: []
         m_Style: 0
         m_Size: 0
         m_Spacing: 0
         m_Alignment: 0
         m_Color:
-          m_OneValue: {r: 1, g: 1, b: 1, a: 1}
-          m_TwoValue: 
-          m_Type: 1
-      m_TwoValue:
+          m_FirstValue: {r: 1, g: 1, b: 1, a: 1}
+          m_SecondValue: 
+          m_Variation: 1
+      m_SecondValue:
       - m_Key: header
         m_Value:
-          m_OneValue:
+          m_FirstValue:
             m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-            m_ExtraFont: []
+            m_Extra: []
             m_Style: 1
             m_Size: 75
             m_Spacing: 1
             m_Alignment: 3
             m_Color:
-              m_OneValue: {r: 1, g: 1, b: 1, a: 1}
-              m_TwoValue: theme.primary.five
-              m_Type: 2
-          m_TwoValue:
+              m_FirstValue: {r: 1, g: 1, b: 1, a: 1}
+              m_SecondValue: theme.primary.five
+              m_Variation: 2
+          m_SecondValue:
           - m_Key: left
             m_Value:
-              m_OneValue:
+              m_FirstValue:
                 m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-                m_ExtraFont: []
+                m_Extra: []
                 m_Style: 1
                 m_Size: 75
                 m_Spacing: 1
                 m_Alignment: 3
                 m_Color:
-                  m_OneValue: {r: 1, g: 1, b: 1, a: 1}
-                  m_TwoValue: theme.primary.five
-                  m_Type: 2
-              m_TwoValue: []
-              m_Type: 1
+                  m_FirstValue: {r: 1, g: 1, b: 1, a: 1}
+                  m_SecondValue: theme.primary.five
+                  m_Variation: 2
+              m_SecondValue: []
+              m_Variation: 1
           - m_Key: right
             m_Value:
-              m_OneValue:
+              m_FirstValue:
                 m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-                m_ExtraFont: []
+                m_Extra: []
                 m_Style: 1
                 m_Size: 75
                 m_Spacing: 1
                 m_Alignment: 5
                 m_Color:
-                  m_OneValue: {r: 1, g: 1, b: 1, a: 1}
-                  m_TwoValue: theme.primary.five
-                  m_Type: 2
-              m_TwoValue: []
-              m_Type: 1
-          m_Type: 2
+                  m_FirstValue: {r: 1, g: 1, b: 1, a: 1}
+                  m_SecondValue: theme.primary.five
+                  m_Variation: 2
+              m_SecondValue: []
+              m_Variation: 1
+          m_Variation: 2
       - m_Key: setting
         m_Value:
-          m_OneValue:
+          m_FirstValue:
             m_Font: {fileID: 0}
-            m_ExtraFont: []
+            m_Extra: []
             m_Style: 0
             m_Size: 0
             m_Spacing: 0
             m_Alignment: 0
             m_Color:
-              m_OneValue: {r: 1, g: 1, b: 1, a: 1}
-              m_TwoValue: 
-              m_Type: 1
-          m_TwoValue:
+              m_FirstValue: {r: 1, g: 1, b: 1, a: 1}
+              m_SecondValue: 
+              m_Variation: 1
+          m_SecondValue:
           - m_Key: label
             m_Value:
-              m_OneValue:
+              m_FirstValue:
                 m_Font: {fileID: 12800000, guid: 9e747dc1ed7fa01498dc7716890d8f96, type: 3}
-                m_ExtraFont: []
+                m_Extra: []
                 m_Style: 1
                 m_Size: 50
                 m_Spacing: 1
                 m_Alignment: 3
                 m_Color:
-                  m_OneValue: {r: 1, g: 1, b: 1, a: 1}
-                  m_TwoValue: theme.primary.five
-                  m_Type: 2
-              m_TwoValue: []
-              m_Type: 1
+                  m_FirstValue: {r: 1, g: 1, b: 1, a: 1}
+                  m_SecondValue: theme.primary.five
+                  m_Variation: 2
+              m_SecondValue: []
+              m_Variation: 1
           - m_Key: item
             m_Value:
-              m_OneValue:
+              m_FirstValue:
                 m_Font: {fileID: 12800000, guid: 9e747dc1ed7fa01498dc7716890d8f96, type: 3}
-                m_ExtraFont: []
+                m_Extra: []
                 m_Style: 1
                 m_Size: 40
                 m_Spacing: 1
                 m_Alignment: 4
                 m_Color:
-                  m_OneValue: {r: 1, g: 1, b: 1, a: 1}
-                  m_TwoValue: theme.primary.five
-                  m_Type: 2
-              m_TwoValue: []
-              m_Type: 1
-          m_Type: 2
-      m_Type: 2
+                  m_FirstValue: {r: 1, g: 1, b: 1, a: 1}
+                  m_SecondValue: theme.primary.five
+                  m_Variation: 2
+              m_SecondValue: []
+              m_Variation: 1
+          m_Variation: 2
+      m_Variation: 2

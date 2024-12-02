@@ -129,13 +129,26 @@ namespace Adapter.Elements.Editor
 			switch (m_TransitionValue)
 			{
 				case Selectable.Transition.ColorTint:
-					//m_ColorBlockValue = (ColorBlock)EditorGUILayout.ObjectField("Color Block", m_ColorBlockValue, typeof(ColorBlock));
+					m_ColorBlockValue.normalColor = EditorGUILayout.ColorField("Normal Color", m_ColorBlockValue.normalColor);
+					m_ColorBlockValue.highlightedColor = EditorGUILayout.ColorField("Highlighted Color", m_ColorBlockValue.highlightedColor);
+					m_ColorBlockValue.pressedColor = EditorGUILayout.ColorField("Pressed Color", m_ColorBlockValue.pressedColor);
+					m_ColorBlockValue.selectedColor = EditorGUILayout.ColorField("Selected Color", m_ColorBlockValue.selectedColor);
+					m_ColorBlockValue.disabledColor = EditorGUILayout.ColorField("Disabled Color", m_ColorBlockValue.disabledColor);
+					m_ColorBlockValue.colorMultiplier = EditorGUILayout.Slider("Color Multiplier", m_ColorBlockValue.colorMultiplier, 1, 5);
+					m_ColorBlockValue.fadeDuration = EditorGUILayout.FloatField("Fade Duration", m_ColorBlockValue.fadeDuration);
 					break;
 				case Selectable.Transition.SpriteSwap:
-					//m_SpriteStateValue = (SpriteState)EditorGUILayout.ObjectField("Sprite State", m_SpriteStateValue, typeof(SpriteState));
+					m_SpriteStateValue.highlightedSprite = (Sprite)EditorGUILayout.ObjectField("Highlighted Sprite", m_SpriteStateValue.highlightedSprite, typeof(Sprite), true);
+					m_SpriteStateValue.pressedSprite = (Sprite)EditorGUILayout.ObjectField("Pressed Sprite", m_SpriteStateValue.pressedSprite, typeof(Sprite), true);
+					m_SpriteStateValue.selectedSprite = (Sprite)EditorGUILayout.ObjectField("Selected Sprite", m_SpriteStateValue.selectedSprite, typeof(Sprite), true);
+					m_SpriteStateValue.disabledSprite = (Sprite)EditorGUILayout.ObjectField("Disabled Sprite", m_SpriteStateValue.disabledSprite, typeof(Sprite), true);
 					break;
 				case Selectable.Transition.Animation:
-					//m_AnimationValue = (AnimationTriggers)EditorGUILayout.ObjectField("Animation", m_AnimationValue, typeof(AnimationTriggers));
+					m_AnimationValue.normalTrigger = EditorGUILayout.TextField("Normal Trigger", m_AnimationValue.normalTrigger);
+					m_AnimationValue.highlightedTrigger = EditorGUILayout.TextField("Highlighted Trigger", m_AnimationValue.highlightedTrigger);
+					m_AnimationValue.pressedTrigger = EditorGUILayout.TextField("Pressed Trigger", m_AnimationValue.pressedTrigger);
+					m_AnimationValue.selectedTrigger = EditorGUILayout.TextField("Selected Trigger", m_AnimationValue.selectedTrigger);
+					m_AnimationValue.disabledTrigger = EditorGUILayout.TextField("Disabled Trigger", m_AnimationValue.disabledTrigger);
 					break;
 				case Selectable.Transition.None:
 				default:
@@ -169,6 +182,7 @@ namespace Adapter.Elements.Editor
 				Button button = creation.AddComponent<Button>();
 				button.setting = m_SettingValue;
 				button.style = m_ButtonStyleValue;
+				button.targetGraphic = image;
 				button.transition = m_TransitionValue;
 				button.colors = m_ColorBlockValue;
 				button.spriteState = m_SpriteStateValue;

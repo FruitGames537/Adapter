@@ -2,8 +2,8 @@
 {
 	public enum ContainerType
 	{
-		Unknown,
-		Container,
-		Store
+		Empty = 0,
+		Store = 1,
+		Container = 2
 	}
 }

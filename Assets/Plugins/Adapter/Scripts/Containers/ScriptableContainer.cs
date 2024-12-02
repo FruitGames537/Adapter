@@ -4,29 +4,27 @@ using UnityEngine;
 
 namespace Adapter.Containers
 {
-	public class ScriptableContainer : ScriptableObject
+	public abstract class ScriptableContainer : ScriptableObject
 	{
-		protected bool CanGetValue<T>(List<Container<string, T>> containers, string name)
+		protected T GetStore<T>(List<Container<string, T>> search, string path, bool safe = false)
 		{
-			string[] split = name.Split('.', 2);
-			foreach (Container<string, T> container in containers)
-				if (split.Length > 1 && split[1].Contains(".") && container.type is ContainerType.Store)
-					throw new IndexOutOfRangeException($"Path still contains the keys to access the value: \"{name}\"");
-				else if (container.name == split[0] && container.type != ContainerType.Unknown)
-					return container.type is ContainerType.Store || CanGetValue(container.container, split[1]);
-			return false;
+			string[] array = path.Split('.', 2);
+			foreach (Container<string, T> container in search)
+				if (array.Length > 1 && array[1].Contains(".") && container.type is ContainerType.Store)
+					throw new IndexOutOfRangeException($"Path still contains keys to access value: \"{path}\"");
+				else if (container.name == array[0] && container.type is not ContainerType.Empty)
+					return container.type is ContainerType.Store ? container.store : GetStore(container.container, array[1]);
+			return safe ? default : throw new KeyNotFoundException($"Value cannot be found in container by path: \"{path}\"");
 		}
-		protected T GetValue<T>(List<Container<string, T>> containers, string name, bool ignore = false)
+		protected bool SearchStore<T>(List<Container<string, T>> search, string path, out T store)
 		{
-			string[] split = name.Split('.', 2);
-			foreach (Container<string, T> container in containers)
-				if (split.Length > 1 && split[1].Contains(".") && container.type is ContainerType.Store)
-					throw new IndexOutOfRangeException($"Path still contains the keys to access the value: \"{name}\"");
-				else if (container.name == split[0] && container.type is not ContainerType.Unknown)
-					return container.type is ContainerType.Store ? container.store : GetValue(container.container, split[1]);
-			if (ignore)
-				return default;
-			throw new KeyNotFoundException($"Value cannot be found in the container by the key: \"{name}\"");
+			string[] array = path.Split('.', 2);
+			foreach (Container<string, T> container in search)
+				if (array.Length > 1 && array[1].Contains(".") && container.type is ContainerType.Store)
+					return (object)(store = default) != default;
+				else if (container.name == array[0] && container.type is not ContainerType.Empty)
+					return container.type is ContainerType.Store ? (object)(store = container.store) == (object)container.store : SearchStore(container.container, array[1], out store);
+			return (object)(store = default) != default;
 		}
 	}
 }

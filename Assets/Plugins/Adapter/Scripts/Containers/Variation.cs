@@ -6,74 +6,78 @@ namespace Adapter.Containers
 	[Serializable]
 	public struct Variation<T1, T2>
 	{
-		private Variation(T1 oneValue, T2 twoValue, Type storeType, VariationType type)
+		private Variation(T1 firstValue, T2 secondValue, VariationType variation, Type type)
 		{
 			if (typeof(T1) == typeof(T2))
 				throw new ArgumentException("First and second types are no different");
-			m_OneValue = oneValue;
-			m_TwoValue = twoValue;
-			m_StoreType = storeType;
+			m_FirstValue = firstValue;
+			m_SecondValue = secondValue;
+			m_Variation = variation;
 			m_Type = type;
 		}
-		public Variation(T1 value) : this(value, default, typeof(T1), VariationType.One) { }
-		public Variation(T2 value) : this(default, value, typeof(T2), VariationType.Two) { }
+		public Variation(T1 value) : this(value, default, VariationType.First, typeof(T1)) { }
+		public Variation(T2 value) : this(default, value, VariationType.Second, typeof(T2)) { }
 
 
 
-		[SerializeField] private T1 m_OneValue;
-		[SerializeField] private T2 m_TwoValue;
+		[SerializeField] private T1 m_FirstValue;
+		[SerializeField] private T2 m_SecondValue;
 
-		[SerializeField] private Type m_StoreType;
-		[SerializeField] private VariationType m_Type;
+		[SerializeField] private VariationType m_Variation;
+		[SerializeField] private Type m_Type;
 
-		public T1 oneValue
+		public T1 firstValue
 		{
 			get
 			{
-				if (m_Type is VariationType.One)
-					return m_OneValue;
+				if (m_Variation is VariationType.First)
+					return m_FirstValue;
 				return default;
 			}
 			set
 			{
-				m_OneValue = value;
-				m_TwoValue = default;
-				m_StoreType = typeof(T1);
-				m_Type = VariationType.One;
+				m_FirstValue = value;
+				m_SecondValue = default;
+				m_Variation = VariationType.First;
+				m_Type = typeof(T1);
 			}
 		}
-		public T2 twoValue
+		public T2 secondValue
 		{
 			get
 			{
-				if (m_Type is VariationType.Two)
-					return m_TwoValue;
+				if (m_Variation is VariationType.Second)
+					return m_SecondValue;
 				return default;
 			}
 			set
 			{
-				m_OneValue = default;
-				m_TwoValue = value;
-				m_StoreType = typeof(T2);
-				m_Type = VariationType.Two;
+				m_FirstValue = default;
+				m_SecondValue = value;
+				m_Variation = VariationType.Second;
+				m_Type = typeof(T2);
 			}
 		}
 
-		public Type storeType => m_StoreType;
-		public VariationType type => m_Type;
+		public VariationType variation => m_Variation;
+		public Type type => m_Type;
 
 		public object value
 		{
 			get
 			{
-				return type is VariationType.One ? m_OneValue : m_TwoValue;
+				if (variation is VariationType.First)
+					return m_FirstValue;
+				else if (variation is VariationType.Second)
+					return m_SecondValue;
+				return default;
 			}
 			set
 			{
-				if (value is T1)
-					oneValue = (T1)value;
-				else if (value is T2)
-					twoValue = (T2)value;
+				if (value is T1 first)
+					firstValue = first;
+				else if (value is T2 second)
+					secondValue = second;
 				else
 					throw new InvalidOperationException("Value type is an unavailable type of variation");
 			}
@@ -82,8 +86,9 @@ namespace Adapter.Containers
 
 
 		public static implicit operator Variation<T1, T2>(T1 value) => new Variation<T1, T2>(value);
+		public static implicit operator T1(Variation<T1, T2> value) => value.firstValue;
+
 		public static implicit operator Variation<T1, T2>(T2 value) => new Variation<T1, T2>(value);
-		public static implicit operator T1(Variation<T1, T2> value) => value.oneValue;
-		public static implicit operator T2(Variation<T1, T2> value) => value.twoValue;
+		public static implicit operator T2(Variation<T1, T2> value) => value.secondValue;
 	}
 }

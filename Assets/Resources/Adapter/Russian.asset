@@ -16,171 +16,175 @@ MonoBehaviour:
   m_Translations:
   - m_Key: demo
     m_Value:
-      m_OneValue:
+      m_FirstValue:
         m_Translation: 
-      m_TwoValue:
+      m_SecondValue:
       - m_Key: menu
         m_Value:
-          m_OneValue:
+          m_FirstValue:
             m_Translation: 
-          m_TwoValue:
+          m_SecondValue:
           - m_Key: title
             m_Value:
-              m_OneValue:
+              m_FirstValue:
                 m_Translation: "\u041C\u0435\u043D\u044E"
-              m_TwoValue: []
-              m_Type: 1
+              m_SecondValue: []
+              m_Variation: 1
           - m_Key: setting
             m_Value:
-              m_OneValue:
+              m_FirstValue:
                 m_Translation: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438"
-              m_TwoValue: []
-              m_Type: 1
-          m_Type: 2
+              m_SecondValue: []
+              m_Variation: 1
+          m_Variation: 2
       - m_Key: setting
         m_Value:
-          m_OneValue:
+          m_FirstValue:
             m_Translation: 
-          m_TwoValue:
+          m_SecondValue:
           - m_Key: title
             m_Value:
-              m_OneValue:
+              m_FirstValue:
                 m_Translation: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438"
-              m_TwoValue: []
-              m_Type: 1
+              m_SecondValue: []
+              m_Variation: 1
           - m_Key: back
             m_Value:
-              m_OneValue:
+              m_FirstValue:
                 m_Translation: "\u041D\u0430\u0437\u0430\u0434"
-              m_TwoValue: []
-              m_Type: 1
+              m_SecondValue: []
+              m_Variation: 1
           - m_Key: language
             m_Value:
-              m_OneValue:
+              m_FirstValue:
                 m_Translation: 
-              m_TwoValue:
+              m_SecondValue:
               - m_Key: label
                 m_Value:
-                  m_OneValue:
+                  m_FirstValue:
                     m_Translation: "\u042F\u0437\u044B\u043A"
-                  m_TwoValue: []
-                  m_Type: 1
+                  m_SecondValue: []
+                  m_Variation: 1
               - m_Key: english
                 m_Value:
-                  m_OneValue:
+                  m_FirstValue:
                     m_Translation: "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438\u0439
                       (English)"
-                  m_TwoValue: []
-                  m_Type: 1
+                  m_SecondValue: []
+                  m_Variation: 1
               - m_Key: japanese
                 m_Value:
-                  m_OneValue:
+                  m_FirstValue:
                     m_Translation: "\u042F\u043F\u043E\u043D\u0441\u043A\u0438\u0439
                       (\u65E5\u672C\u8A9E)"
-                  m_TwoValue: []
-                  m_Type: 1
+                  m_SecondValue: []
+                  m_Variation: 1
               - m_Key: russian
                 m_Value:
-                  m_OneValue:
+                  m_FirstValue:
                     m_Translation: "\u0420\u0443\u0441\u0441\u043A\u0438\u0439 (\u0420\u0443\u0441\u0441\u043A\u0438\u0439)"
-                  m_TwoValue: []
-                  m_Type: 1
-              m_Type: 2
+                  m_SecondValue: []
+                  m_Variation: 1
+              m_Variation: 2
           - m_Key: theme
             m_Value:
-              m_OneValue:
+              m_FirstValue:
                 m_Translation: 
-              m_TwoValue:
+              m_SecondValue:
               - m_Key: label
                 m_Value:
-                  m_OneValue:
+                  m_FirstValue:
                     m_Translation: "\u0422\u0435\u043C\u0430"
-                  m_TwoValue: []
-                  m_Type: 1
+                  m_SecondValue: []
+                  m_Variation: 1
               - m_Key: light
                 m_Value:
-                  m_OneValue:
+                  m_FirstValue:
                     m_Translation: "\u0421\u0432\u0435\u0442\u043B\u0430\u044F"
-                  m_TwoValue: []
-                  m_Type: 1
+                  m_SecondValue: []
+                  m_Variation: 1
               - m_Key: dark
                 m_Value:
-                  m_OneValue:
+                  m_FirstValue:
                     m_Translation: "\u0422\u0451\u043C\u043D\u0430\u044F"
-                  m_TwoValue: []
-                  m_Type: 1
+                  m_SecondValue: []
+                  m_Variation: 1
               - m_Key: custom
                 m_Value:
-                  m_OneValue:
+                  m_FirstValue:
                     m_Translation: "\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u0441\u043A\u0430\u044F"
-                  m_TwoValue: []
-                  m_Type: 1
-              m_Type: 2
+                  m_SecondValue: []
+                  m_Variation: 1
+              m_Variation: 2
           - m_Key: saving
             m_Value:
-              m_OneValue:
+              m_FirstValue:
                 m_Translation: 
-              m_TwoValue:
+              m_SecondValue:
               - m_Key: label
                 m_Value:
-                  m_OneValue:
+                  m_FirstValue:
                     m_Translation: "\u0421\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u0435"
-                  m_TwoValue: []
-                  m_Type: 1
+                  m_SecondValue: []
+                  m_Variation: 1
               - m_Key: all
                 m_Value:
-                  m_OneValue:
+                  m_FirstValue:
                     m_Translation: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C
                       \u0412\u0441\u0451"
-                  m_TwoValue: []
-                  m_Type: 1
+                  m_SecondValue: []
+                  m_Variation: 1
               - m_Key: language
                 m_Value:
-                  m_OneValue:
+                  m_FirstValue:
                     m_Translation: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C
                       \u042F\u0437\u044B\u043A"
-                  m_TwoValue: []
-                  m_Type: 1
+                  m_SecondValue: []
+                  m_Variation: 1
               - m_Key: theme
                 m_Value:
-                  m_OneValue:
+                  m_FirstValue:
                     m_Translation: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C
                       \u0422\u0435\u043C\u0443"
-                  m_TwoValue: []
-                  m_Type: 1
-              m_Type: 2
+                  m_SecondValue: []
+                  m_Variation: 1
+              m_Variation: 2
           - m_Key: loading
             m_Value:
-              m_OneValue:
+              m_FirstValue:
                 m_Translation: 
-              m_TwoValue:
+              m_SecondValue:
               - m_Key: label
                 m_Value:
-                  m_OneValue:
+                  m_FirstValue:
                     m_Translation: "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430"
-                  m_TwoValue: []
-                  m_Type: 1
+                  m_SecondValue: []
+                  m_Variation: 1
               - m_Key: all
                 m_Value:
-                  m_OneValue:
+                  m_FirstValue:
                     m_Translation: "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C
                       \u0412\u0441\u0451"
-                  m_TwoValue: []
-                  m_Type: 1
+                  m_SecondValue: []
+                  m_Variation: 1
               - m_Key: language
                 m_Value:
-                  m_OneValue:
+                  m_FirstValue:
                     m_Translation: "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C
                       \u042F\u0437\u044B\u043A"
-                  m_TwoValue: []
-                  m_Type: 1
+                  m_SecondValue: []
+                  m_Variation: 1
               - m_Key: theme
                 m_Value:
-                  m_OneValue:
+                  m_FirstValue:
                     m_Translation: "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C
                       \u0422\u0435\u043C\u0443"
-                  m_TwoValue: []
-                  m_Type: 1
-              m_Type: 2
-          m_Type: 2
-      m_Type: 2
+                  m_SecondValue: []
+                  m_Variation: 1
+              m_Variation: 2
+          m_Variation: 2
+      m_Variation: 2
+  m_Documents: []
+  m_Images: []
+  m_Audios: []
+  m_Videos: []

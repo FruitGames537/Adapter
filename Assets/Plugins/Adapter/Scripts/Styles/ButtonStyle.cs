@@ -17,7 +17,7 @@ namespace Adapter.Styles
 
 		[SerializeField] private UI.Selectable.Transition m_Transition = UI.Selectable.Transition.ColorTint;
 		[SerializeField] private ColorBlock m_Color = ColorBlock.defaultColorBlock;
-		[SerializeField] private UI.SpriteState m_Sprite = new UI.SpriteState();
+		[SerializeField] private SpriteState m_Sprite = new SpriteState();
 		[SerializeField] private UI.AnimationTriggers m_Animation = new UI.AnimationTriggers();
 
 		public UI.Selectable.Transition transition { get => m_Transition; set => m_Transition = value; }
@@ -69,7 +69,7 @@ namespace Adapter.Styles
 		public void Apply(Button button)
 		{
 			if (button == null)
-				throw new NullReferenceException("Button reference does not refer to the button object");
+				throw new NullReferenceException("Button reference does not refer to button object");
 			button.transition = m_Transition;
 			switch (m_Transition)
 			{
@@ -77,7 +77,7 @@ namespace Adapter.Styles
 					button.colors = m_Color.Apply(button);
 					break;
 				case UI.Selectable.Transition.SpriteSwap:
-					button.spriteState = m_Sprite;
+					button.spriteState = m_Sprite.Apply(button);
 					break;
 				case UI.Selectable.Transition.Animation:
 					button.animationTriggers = m_Animation;

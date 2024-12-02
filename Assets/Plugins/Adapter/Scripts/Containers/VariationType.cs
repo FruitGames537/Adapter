@@ -2,8 +2,8 @@
 {
 	public enum VariationType
 	{
-		Unknown,
-		One,
-		Two
+		Unknown = 0,
+		First = 1,
+		Second = 2
 	}
 }

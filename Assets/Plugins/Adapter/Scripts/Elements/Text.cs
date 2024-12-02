@@ -1,9 +1,10 @@
 using Adapter.Styles;
+using Adapter.Translations;
 using UnityEngine;
 
 namespace Adapter.Elements
 {
-	[AddComponentMenu("UI/Adaptive/Text", order: 3)]
+	[AddComponentMenu("UI/Adaptive/Text", order: 1)]
 	public class Text : UnityEngine.UI.Text, IElement
 	{
 		[SerializeField] protected Setting m_Setting;
@@ -20,14 +21,14 @@ namespace Adapter.Elements
 
 		public void Modify()
 		{
-			if (m_Setting != null && m_Setting.currentTheme != null && m_Setting.currentTheme.GetStyle<TextStyle>(m_Style) is TextStyle style)
-				style.Apply(this, m_Setting.languageCode);
-			if (m_Setting != null && m_Setting.currentLanguage != null)
-				text = m_Setting.currentLanguage.GetTranslation(m_Translation) ?? m_Text;
+			if (m_Setting != null && m_Setting.currentTheme != null && m_Setting.currentTheme.SearchStyle(m_Style, out TextStyle textStyle))
+				textStyle.Apply(this, m_Setting.languageCode);
+			if (m_Setting != null && m_Setting.currentLanguage != null && m_Setting.currentLanguage.SearchTranslation(m_Translation, out Translation translation))
+				text = translation;
 		}
 
-		private void OnChangeTheme(string theme, bool emptyName) => Modify();
-		private void OnChangeLanguage(SystemLanguage? language, bool emptyCode) => Modify();
+		private void OnThemeChanged(string themeName, bool nameIsEmpty) => Modify();
+		private void OnLanguageChanged(SystemLanguage? languageCode, bool codeIsEmpty) => Modify();
 
 		protected override void OnEnable()
 		{
@@ -35,8 +36,8 @@ namespace Adapter.Elements
 
 			if (m_Setting != null)
 			{
-				m_Setting.ThemeChanged += OnChangeTheme;
-				m_Setting.LanguageChanged += OnChangeLanguage;
+				m_Setting.ThemeChanged += OnThemeChanged;
+				m_Setting.LanguageChanged += OnLanguageChanged;
 			}
 		}
 		protected override void OnDisable()
@@ -45,8 +46,8 @@ namespace Adapter.Elements
 
 			if (m_Setting != null)
 			{
-				m_Setting.ThemeChanged -= OnChangeTheme;
-				m_Setting.LanguageChanged -= OnChangeLanguage;
+				m_Setting.ThemeChanged -= OnThemeChanged;
+				m_Setting.LanguageChanged -= OnLanguageChanged;
 			}
 		}
 

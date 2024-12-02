@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Adapter.Elements
 {
-	[AddComponentMenu("UI/Adaptive/Button", order: 2)]
+	[AddComponentMenu("UI/Adaptive/Button", order: 3)]
 	public class Button : UnityEngine.UI.Button, IElement
 	{
 		[SerializeField] protected Setting m_Setting;
@@ -16,25 +16,25 @@ namespace Adapter.Elements
 
 		public void Modify()
 		{
-			if (m_Setting != null && m_Setting.currentLanguage != null && m_Setting.currentTheme.GetStyle<ButtonStyle>(m_Style) is ButtonStyle style)
-				style.Apply(this);
+			if (m_Setting != null && m_Setting.currentLanguage != null && m_Setting.currentTheme.SearchStyle(m_Style, out ButtonStyle buttonStyle))
+				buttonStyle.Apply(this);
 		}
 
-		private void OnChangeTheme(string theme, bool emptyName) => Modify();
+		private void OnThemeChanged(string themeName, bool nameIsEmpty) => Modify();
 
 		protected override void OnEnable()
 		{
 			base.OnEnable();
 
 			if (m_Setting != null)
-				m_Setting.ThemeChanged += OnChangeTheme;
+				m_Setting.ThemeChanged += OnThemeChanged;
 		}
 		protected override void OnDisable()
 		{
 			base.OnDisable();
 
 			if (m_Setting != null)
-				m_Setting.ThemeChanged -= OnChangeTheme;
+				m_Setting.ThemeChanged -= OnThemeChanged;
 		}
 
 		protected override void Start()

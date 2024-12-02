@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Adapter.Elements
 {
-	[AddComponentMenu("UI/Adaptive/Image", order: 1)]
+	[AddComponentMenu("UI/Adaptive/Image", order: 2)]
 	public class Image : UnityEngine.UI.Image, IElement
 	{
 		[SerializeField] protected Setting m_Setting;
@@ -16,25 +16,25 @@ namespace Adapter.Elements
 
 		public void Modify()
 		{
-			if (m_Setting != null && m_Setting.currentTheme != null && m_Setting.currentTheme.GetStyle<ImageStyle>(m_Style) is ImageStyle style)
-				style.Apply(this);
+			if (m_Setting != null && m_Setting.currentTheme != null && m_Setting.currentTheme.SearchStyle(m_Style, out ImageStyle imageStyle))
+				imageStyle.Apply(this);
 		}
 		
-		private void OnChangeTheme(string theme, bool emptyName) => Modify();
+		private void OnThemeChanged(string themeName, bool nameIsEmpty) => Modify();
 
 		protected override void OnEnable()
 		{
 			base.OnEnable();
 
 			if (m_Setting != null)
-				m_Setting.ThemeChanged += OnChangeTheme;
+				m_Setting.ThemeChanged += OnThemeChanged;
 		}
 		protected override void OnDisable()
 		{
 			base.OnDisable();
 
 			if (m_Setting != null)
-				m_Setting.ThemeChanged -= OnChangeTheme;
+				m_Setting.ThemeChanged -= OnThemeChanged;
 		}
 
 		protected override void Start()

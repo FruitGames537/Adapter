@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Adapter
 {
-	public class AutoLoader : MonoBehaviour
+	public class Manager : MonoBehaviour
 	{
 		[SerializeField] private Setting m_Setting;
 
@@ -14,8 +14,8 @@ namespace Adapter
 		{
 			if (m_Setting != null)
 			{
-				m_Setting.LoadLanguage();
-				m_Setting.LoadTheme();
+				m_Setting.SafeLoadLanguage();
+				m_Setting.SafeLoadTheme();
 			}
 		}
 	}

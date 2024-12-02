@@ -47,7 +47,7 @@ namespace Adapter.Styles
 		public UI.ColorBlock Apply(Button button)
 		{
 			if (button == null)
-				return defaultColorBlock;
+				return UI.ColorBlock.defaultColorBlock;
 			UI.ColorBlock colorBlock = new UI.ColorBlock();
 			colorBlock.normalColor = Apply(button, defaultColorBlock.normalColor, m_NormalColor);
 			colorBlock.highlightedColor = Apply(button, defaultColorBlock.highlightedColor, m_HighlightedColor);
@@ -61,7 +61,7 @@ namespace Adapter.Styles
 		private Color Apply(Button button, Color color, Variation<Color, string> value)
 		{
 			if (button.setting != null && button.setting.currentTheme != null)
-				return value.type is VariationType.One ? value.oneValue : button.setting.currentTheme.GetColor(value.twoValue);
+				return value.variation is VariationType.First ? value.firstValue : button.setting.currentTheme.GetColor(value.secondValue);
 			return color;
 		}
 

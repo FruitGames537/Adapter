@@ -1393,11 +1393,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: fa401872a217712419ddc30025970062, type: 2}
         m_TargetAssemblyTypeName: Adapter.Setting, Assembly-CSharp-firstpass
-        m_MethodName: ChangeTheme
-        m_Mode: 5
+        m_MethodName: SetTheme
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 4c716e8d181369f45b5b1d2fd9c561f9, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Adapter.Containers.Theme, Assembly-CSharp-firstpass
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Custom
@@ -2672,11 +2672,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: fa401872a217712419ddc30025970062, type: 2}
         m_TargetAssemblyTypeName: Adapter.Setting, Assembly-CSharp-firstpass
-        m_MethodName: ChangeTheme
-        m_Mode: 5
+        m_MethodName: SetTheme
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 3ef8dc88ce1d15e48af9ac7c554e0b42, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Adapter.Containers.Theme, Assembly-CSharp-firstpass
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Dark
@@ -3393,11 +3393,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: fa401872a217712419ddc30025970062, type: 2}
         m_TargetAssemblyTypeName: Adapter.Setting, Assembly-CSharp-firstpass
-        m_MethodName: ChangeTheme
-        m_Mode: 5
+        m_MethodName: SetTheme
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 5bf838c24921b394b8840ad817974105, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Adapter.Containers.Theme, Assembly-CSharp-firstpass
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Light
