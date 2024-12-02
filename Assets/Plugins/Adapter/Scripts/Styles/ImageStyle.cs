@@ -18,7 +18,7 @@ namespace Adapter.Styles
 
 
 		[SerializeField] private bool m_CustomSprite = false;
-		[SerializeField] private Sprite m_Sprite = null;
+		[SerializeField] private Variation<Sprite, string> m_Sprite = (Sprite)null;
 
 		[SerializeField] private Variation<Color, string> m_Color = Color.white;
 
