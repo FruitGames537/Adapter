@@ -10,7 +10,7 @@ namespace Adapter.Styles
 	{
 		public ImageStyle(Variation<Sprite, string> sprite, Variation<Color, string> color)
 		{
-			m_CustomSprite = sprite != null;
+			m_CustomSprite = sprite != (Sprite)null;
 			m_Sprite = sprite;
 			m_Color = color;
 		}
