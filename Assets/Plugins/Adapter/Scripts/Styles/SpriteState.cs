@@ -49,6 +49,8 @@ namespace Adapter.Styles
 			return null;
 		}
 
+
+
 		public static implicit operator SpriteState(UI.SpriteState spriteState) => new SpriteState(spriteState.highlightedSprite, spriteState.pressedSprite, spriteState.selectedSprite, spriteState.disabledSprite);
 		public static implicit operator UI.SpriteState(SpriteState spriteState) => new UI.SpriteState() { highlightedSprite = spriteState.highlightedSprite, pressedSprite = spriteState.pressedSprite, selectedSprite = spriteState.selectedSprite, disabledSprite = spriteState.disabledSprite };
 	}
