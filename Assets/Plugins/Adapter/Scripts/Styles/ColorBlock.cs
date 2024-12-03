@@ -65,8 +65,6 @@ namespace Adapter.Styles
 			return color;
 		}
 
-
-
 		public static implicit operator ColorBlock(UI.ColorBlock colorBlock) => new ColorBlock(colorBlock.normalColor, colorBlock.highlightedColor, colorBlock.pressedColor, colorBlock.selectedColor, colorBlock.disabledColor, colorBlock.colorMultiplier, colorBlock.fadeDuration);
 		public static implicit operator UI.ColorBlock(ColorBlock colorBlock) => new UI.ColorBlock() { normalColor = colorBlock.normalColor, highlightedColor = colorBlock.highlightedColor, pressedColor = colorBlock.pressedColor, selectedColor = colorBlock.selectedColor, disabledColor = colorBlock.disabledColor, colorMultiplier = colorBlock.colorMultiplier, fadeDuration = colorBlock.fadeDuration };
 	}
