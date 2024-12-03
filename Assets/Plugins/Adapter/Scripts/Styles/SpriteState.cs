@@ -31,21 +31,21 @@ namespace Adapter.Styles
 
 
 
-		public UI.SpriteState Apply(Button button)
+		public UI.SpriteState Apply(Setting setting)
 		{
-			if (button == null)
+			if (setting == null)
 				return new UI.SpriteState();
 			UI.SpriteState spriteState = new UI.SpriteState();
-			spriteState.highlightedSprite = Apply(button, m_HighlightedSprite);
-			spriteState.pressedSprite = Apply(button, m_PressedSprite);
-			spriteState.selectedSprite = Apply(button, m_SelectedSprite);
-			spriteState.disabledSprite = Apply(button, m_DisabledSprite);
+			spriteState.highlightedSprite = Apply(setting, m_HighlightedSprite);
+			spriteState.pressedSprite = Apply(setting, m_PressedSprite);
+			spriteState.selectedSprite = Apply(setting, m_SelectedSprite);
+			spriteState.disabledSprite = Apply(setting, m_DisabledSprite);
 			return spriteState;
 		}
-		private Sprite Apply(Button button, Variation<Sprite, string> value)
+		private Sprite Apply(Setting setting, Variation<Sprite, string> value)
 		{
-			if (button.setting != null && button.setting.currentTheme != null)
-				return value.variation is VariationType.First ? value.firstValue : button.setting.currentTheme.GetSprite(value.secondValue);
+			if (setting.currentTheme != null)
+				return value.variation is VariationType.First ? value.firstValue : setting.currentTheme.GetSprite(value.secondValue);
 			return null;
 		}
 

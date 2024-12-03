@@ -44,24 +44,24 @@ namespace Adapter.Styles
 
 
 
-		public UI.ColorBlock Apply(Button button)
+		public UI.ColorBlock Apply(Setting setting)
 		{
-			if (button == null)
+			if (setting == null)
 				return UI.ColorBlock.defaultColorBlock;
 			UI.ColorBlock colorBlock = new UI.ColorBlock();
-			colorBlock.normalColor = Apply(button, defaultColorBlock.normalColor, m_NormalColor);
-			colorBlock.highlightedColor = Apply(button, defaultColorBlock.highlightedColor, m_HighlightedColor);
-			colorBlock.pressedColor = Apply(button, defaultColorBlock.pressedColor, m_PressedColor);
-			colorBlock.selectedColor = Apply(button, defaultColorBlock.selectedColor, m_SelectedColor);
-			colorBlock.disabledColor = Apply(button, defaultColorBlock.disabledColor, m_DisabledColor);
+			colorBlock.normalColor = Apply(setting, defaultColorBlock.normalColor, m_NormalColor);
+			colorBlock.highlightedColor = Apply(setting, defaultColorBlock.highlightedColor, m_HighlightedColor);
+			colorBlock.pressedColor = Apply(setting, defaultColorBlock.pressedColor, m_PressedColor);
+			colorBlock.selectedColor = Apply(setting, defaultColorBlock.selectedColor, m_SelectedColor);
+			colorBlock.disabledColor = Apply(setting, defaultColorBlock.disabledColor, m_DisabledColor);
 			colorBlock.colorMultiplier = m_ColorMultiplier;
 			colorBlock.fadeDuration = m_FadeDuration;
 			return colorBlock;
 		}
-		private Color Apply(Button button, Color color, Variation<Color, string> value)
+		private Color Apply(Setting setting, Color color, Variation<Color, string> value)
 		{
-			if (button.setting != null && button.setting.currentTheme != null)
-				return value.variation is VariationType.First ? value.firstValue : button.setting.currentTheme.GetColor(value.secondValue);
+			if (setting != null && setting.currentTheme != null)
+				return value.variation is VariationType.First ? value.firstValue : setting.currentTheme.GetColor(value.secondValue);
 			return color;
 		}
 

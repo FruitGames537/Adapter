@@ -9,18 +9,21 @@ namespace Adapter.Styles
 	public class ButtonStyle : IStyle<Button>
 	{
 		private ButtonStyle(UI.Selectable.Transition transition) => m_Transition = transition;
+
 		public ButtonStyle(ColorBlock color) : this(UI.Selectable.Transition.ColorTint) => m_Color = color;
-		public ButtonStyle(UI.SpriteState sprite) : this(UI.Selectable.Transition.SpriteSwap) => m_Sprite = sprite;
+		public ButtonStyle(SpriteState sprite) : this(UI.Selectable.Transition.SpriteSwap) => m_Sprite = sprite;
 		public ButtonStyle(UI.AnimationTriggers animation) : this(UI.Selectable.Transition.Animation) => m_Animation = animation ?? new UI.AnimationTriggers();
 
 
 
 		[SerializeField] private UI.Selectable.Transition m_Transition = UI.Selectable.Transition.ColorTint;
+
 		[SerializeField] private ColorBlock m_Color = ColorBlock.defaultColorBlock;
 		[SerializeField] private SpriteState m_Sprite = new SpriteState();
 		[SerializeField] private UI.AnimationTriggers m_Animation = new UI.AnimationTriggers();
 
 		public UI.Selectable.Transition transition { get => m_Transition; set => m_Transition = value; }
+
 		public ColorBlock? color {
 			get
 			{
@@ -35,7 +38,7 @@ namespace Adapter.Styles
 				m_Color = value.Value;
 			}
 		}
-		public UI.SpriteState? sprite {
+		public SpriteState? sprite {
 			get
 			{
 				if (m_Transition != UI.Selectable.Transition.SpriteSwap)
@@ -74,10 +77,10 @@ namespace Adapter.Styles
 			switch (m_Transition)
 			{
 				case UI.Selectable.Transition.ColorTint:
-					button.colors = m_Color.Apply(button);
+					button.colors = m_Color.Apply(button.setting);
 					break;
 				case UI.Selectable.Transition.SpriteSwap:
-					button.spriteState = m_Sprite.Apply(button);
+					button.spriteState = m_Sprite.Apply(button.setting);
 					break;
 				case UI.Selectable.Transition.Animation:
 					button.animationTriggers = m_Animation;
