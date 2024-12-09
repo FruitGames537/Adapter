@@ -5,10 +5,10 @@ namespace Adapter.Elements.Editor
 	[CustomEditor(typeof(Text))]
 	public class TextEditor : UnityEditor.UI.TextEditor
 	{
-		private SerializedProperty settingProperty;
+		private SerializedProperty m_SettingProperty;
 
-		private SerializedProperty styleProperty;
-		private SerializedProperty translationProperty;
+		private SerializedProperty m_StyleProperty;
+		private SerializedProperty m_TranslationProperty;
 
 
 
@@ -16,18 +16,18 @@ namespace Adapter.Elements.Editor
 		{
 			base.OnEnable();
 
-			settingProperty = serializedObject.FindProperty("m_Setting");
+			m_SettingProperty = serializedObject.FindProperty("m_Setting");
 
-			styleProperty = serializedObject.FindProperty("m_Style");
-			translationProperty = serializedObject.FindProperty("m_Translation");
+			m_StyleProperty = serializedObject.FindProperty("m_Style");
+			m_TranslationProperty = serializedObject.FindProperty("m_Translation");
 		}
 
 		public override void OnInspectorGUI()
 		{
-			EditorGUILayout.PropertyField(settingProperty);
+			EditorGUILayout.PropertyField(m_SettingProperty);
 
-			EditorGUILayout.PropertyField(styleProperty);
-			EditorGUILayout.PropertyField(translationProperty);
+			EditorGUILayout.PropertyField(m_StyleProperty);
+			EditorGUILayout.PropertyField(m_TranslationProperty);
 
 			serializedObject.ApplyModifiedProperties();
 

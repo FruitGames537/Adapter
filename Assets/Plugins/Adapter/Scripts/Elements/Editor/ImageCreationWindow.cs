@@ -39,7 +39,7 @@ namespace Adapter.Elements.Editor
 		{
 			titleContent = new GUIContent("Image Creation");
 			minSize = maxSize = new Vector2(320, 640);
-			m_RectTransform = Selection.activeGameObject?.GetComponent<RectTransform>();
+			m_RectTransform = Selection.activeGameObject != null ? Selection.activeGameObject.GetComponent<RectTransform>() : null;
 
 			m_NameValue = "Adaptive Image";
 			m_PositionValue = Vector3.zero;
@@ -67,7 +67,7 @@ namespace Adapter.Elements.Editor
 			{
 				GameObject creation = new GameObject(m_NameValue);
 				RectTransform transform = creation.AddComponent<RectTransform>();
-				transform.position = m_RectTransform?.TransformPoint(m_PositionValue) ?? context.transform.TransformPoint(m_PositionValue);
+				transform.position = m_RectTransform != null ? m_RectTransform.TransformPoint(m_PositionValue) : context.transform.TransformPoint(m_PositionValue);
 				transform.sizeDelta = m_SizeValue;
 				transform.rotation = Quaternion.Euler(m_RotationValue);
 				Image image = creation.AddComponent<Image>();
@@ -75,7 +75,8 @@ namespace Adapter.Elements.Editor
 				image.style = m_StyleValue;
 				image.sprite = m_SpriteValue;
 				image.color = m_ColorValue;
-				creation.transform.SetParent(m_Context?.transform);
+				if (m_Context != null)
+					creation.transform.SetParent(m_Context.transform);
 				creation.transform.localScale = Vector3.one;
 				Close();
 			}

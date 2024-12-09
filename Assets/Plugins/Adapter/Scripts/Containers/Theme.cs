@@ -8,45 +8,23 @@ namespace Adapter.Containers
 	[CreateAssetMenu(menuName = "Adapter/Container/Theme", fileName = "New Theme", order = 2)]
 	public class Theme : ScriptableContainer
 	{
-		public Theme(string themeName) => m_ThemeName = themeName;
-
-		public Theme(string themeName, List<Container<string, Color>> colors, List<Container<string, Sprite>> sprites) : this(themeName)
-		{
-			m_Colors = colors;
-			m_Sprites = sprites;
-		}
-		public Theme(string themeName, List<Container<string, TextStyle>> textStyles, List<Container<string, ImageStyle>> imageStyles, List<Container<string, ButtonStyle>> buttonStyles) : this(themeName)
-		{
-			m_TextStyles = textStyles;
-			m_ImageStyles = imageStyles;
-			m_ButtonStyles = buttonStyles;
-		}
-
-		public Theme(string themeName, List<Container<string, Color>> colors, List<Container<string, Sprite>> sprites, List<Container<string, TextStyle>> textStyles, List<Container<string, ImageStyle>> imageStyles, List<Container<string, ButtonStyle>> buttonStyles) : this(themeName, textStyles, imageStyles, buttonStyles)
-		{
-			m_Colors = colors;
-			m_Sprites = sprites;
-		}
-
-
-
 		[SerializeField] private string m_ThemeName = string.Empty;
 
-		[SerializeField] private List<Container<string, Color>> m_Colors = new List<Container<string, Color>>();
-		[SerializeField] private List<Container<string, Sprite>> m_Sprites = new List<Container<string, Sprite>>();
+		[SerializeField] private List<Container<string, Color>> m_Colors;
+		[SerializeField] private List<Container<string, Sprite>> m_Sprites;
 
-		[SerializeField] private List<Container<string, TextStyle>> m_TextStyles = new List<Container<string, TextStyle>>();
-		[SerializeField] private List<Container<string, ImageStyle>> m_ImageStyles = new List<Container<string, ImageStyle>>();
-		[SerializeField] private List<Container<string, ButtonStyle>> m_ButtonStyles = new List<Container<string, ButtonStyle>>();
+		[SerializeField] private List<Container<string, TextStyle>> m_TextStyles;
+		[SerializeField] private List<Container<string, ImageStyle>> m_ImageStyles;
+		[SerializeField] private List<Container<string, ButtonStyle>> m_ButtonStyles;
 
 		public string themeName => m_ThemeName;
 
-		public List<Container<string, Color>> colors => m_Colors;
-		public List<Container<string, Sprite>> sprites => m_Sprites;
+		public List<Container<string, Color>> colors { get => m_Colors; set => m_Colors = value ?? new List<Container<string, Color>>(); }
+		public List<Container<string, Sprite>> sprites {get => m_Sprites; set => m_Sprites = value ?? new List<Container<string, Sprite>>(); }
 
-		public List<Container<string, TextStyle>> textStyles => m_TextStyles;
-		public List<Container<string, ImageStyle>> imageStyles => m_ImageStyles;
-		public List<Container<string, ButtonStyle>> buttonStyles => m_ButtonStyles;
+		public List<Container<string, TextStyle>> textStyles { get => m_TextStyles; set => m_TextStyles = value ?? new List<Container<string, TextStyle>>(); }
+		public List<Container<string, ImageStyle>> imageStyles { get => m_ImageStyles; set => m_ImageStyles = value ?? new List<Container<string, ImageStyle>>(); }
+		public List<Container<string, ButtonStyle>> buttonStyles { get => m_ButtonStyles; set => m_ButtonStyles = value ?? new List<Container<string, ButtonStyle>>(); }
 
 
 

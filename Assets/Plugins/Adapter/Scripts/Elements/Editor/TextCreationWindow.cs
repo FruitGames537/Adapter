@@ -61,7 +61,7 @@ namespace Adapter.Elements.Editor
 		{
 			titleContent = new GUIContent("Text Creation");
 			minSize = maxSize = new Vector2(320, 640);
-			m_RectTransform = Selection.activeGameObject?.GetComponent<RectTransform>();
+			m_RectTransform = Selection.activeGameObject ? Selection.activeGameObject.GetComponent<RectTransform>() : null;
 
 			m_NameValue = "Adaptive Text";
 			m_PositionValue = Vector3.zero;
@@ -105,7 +105,7 @@ namespace Adapter.Elements.Editor
 			{
 				GameObject creation = new GameObject(m_NameValue);
 				RectTransform transform = creation.AddComponent<RectTransform>();
-				transform.position = m_RectTransform?.TransformPoint(m_PositionValue) ?? context.transform.TransformPoint(m_PositionValue);
+				transform.position = m_RectTransform != null ? m_RectTransform.TransformPoint(m_PositionValue) : context.transform.TransformPoint(m_PositionValue);
 				transform.sizeDelta = m_SizeValue;
 				transform.rotation = Quaternion.Euler(m_RotationValue);
 				Text text = creation.AddComponent<Text>();
@@ -119,7 +119,8 @@ namespace Adapter.Elements.Editor
 				text.lineSpacing = m_FontSpacingValue;
 				text.alignment = m_FontAlignmentValue;
 				text.color = m_FontColorValue;
-				creation.transform.SetParent(m_Context?.transform);
+				if (m_Context != null)
+					creation.transform.SetParent(m_Context.transform);
 				creation.transform.localScale = Vector3.one;
 				Close();
 			}

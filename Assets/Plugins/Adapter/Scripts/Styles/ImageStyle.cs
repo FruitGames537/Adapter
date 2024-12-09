@@ -48,11 +48,11 @@ namespace Adapter.Styles
 			if (image == null)
 				throw new NullReferenceException("Image reference does not refer to image object");
 			if (m_CustomSprite && image.setting != null && image.setting.currentTheme != null)
-				image.sprite = m_Sprite.variation is VariationType.First ? m_Sprite.firstValue : image.setting.currentTheme.GetSprite(m_Sprite.secondValue);
+				image.sprite = m_Sprite.variation is VariationType.First ? m_Sprite.firstValue : m_Sprite.variation is VariationType.Second ? image.setting.currentTheme.GetSprite(m_Sprite.secondValue) : null;
 			else if (m_CustomSprite)
 				image.sprite = null;
 			if (image.setting != null && image.setting.currentTheme != null)
-				image.color = m_Color.variation is VariationType.First ? m_Color.firstValue : image.setting.currentTheme.GetColor(m_Color.secondValue);
+				image.color = m_Color.variation is VariationType.First ? m_Color.firstValue : m_Color.variation is VariationType.Second ? image.setting.currentTheme.GetColor(m_Color.secondValue) : Color.white;
 			else
 				image.color = Color.white;
 		}

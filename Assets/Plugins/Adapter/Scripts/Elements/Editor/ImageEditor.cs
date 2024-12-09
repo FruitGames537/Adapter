@@ -5,8 +5,8 @@ namespace Adapter.Elements.Editor
 	[CustomEditor(typeof(Image))]
 	public class ImageEditor : UnityEditor.UI.ImageEditor
 	{
-		private SerializedProperty settingProperty;
-		private SerializedProperty styleProperty;
+		private SerializedProperty m_SettingProperty;
+		private SerializedProperty m_StyleProperty;
 
 
 
@@ -14,14 +14,14 @@ namespace Adapter.Elements.Editor
 		{
 			base.OnEnable();
 
-			settingProperty = serializedObject.FindProperty("m_Setting");
-			styleProperty = serializedObject.FindProperty("m_Style");
+			m_SettingProperty = serializedObject.FindProperty("m_Setting");
+			m_StyleProperty = serializedObject.FindProperty("m_Style");
 		}
 
 		public override void OnInspectorGUI()
 		{
-			EditorGUILayout.PropertyField(settingProperty);
-			EditorGUILayout.PropertyField(styleProperty);
+			EditorGUILayout.PropertyField(m_SettingProperty);
+			EditorGUILayout.PropertyField(m_StyleProperty);
 
 			serializedObject.ApplyModifiedProperties();
 

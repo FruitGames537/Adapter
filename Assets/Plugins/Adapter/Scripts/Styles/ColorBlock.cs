@@ -1,5 +1,4 @@
 using Adapter.Containers;
-using Adapter.Elements;
 using System;
 using UnityEngine;
 using UI = UnityEngine.UI;
@@ -61,7 +60,7 @@ namespace Adapter.Styles
 		private Color Apply(Setting setting, Color color, Variation<Color, string> value)
 		{
 			if (setting != null && setting.currentTheme != null)
-				return value.variation is VariationType.First ? value.firstValue : setting.currentTheme.GetColor(value.secondValue);
+				return value.variation is VariationType.First ? value.firstValue : value.variation is VariationType.Second ? setting.currentTheme.GetColor(value.secondValue) : color;
 			return color;
 		}
 

@@ -59,10 +59,10 @@ namespace Adapter
 		
 		private void OnValidate()
 		{
-			m_Theme = m_DefaultTheme ?? (m_Themes != null && m_Themes.Count > 0 ? m_Themes[0] : null);
+			m_Theme = m_DefaultTheme != null ? m_DefaultTheme : (m_Themes != null && m_Themes.Count > 0 ? m_Themes[0] : null);
 			m_ThemeName = m_Theme != null ? m_Theme.themeName : null;
 
-			m_Language = m_DefaultLanguage ?? (m_Languages != null && m_Languages.Count > 0 ? m_Languages[0] : null);
+			m_Language = m_DefaultLanguage != null ? m_DefaultLanguage : (m_Languages != null && m_Languages.Count > 0 ? m_Languages[0] : null);
 			m_LanguageCode = m_Language != null ? m_Language.languageCode : null;
 		}
 
@@ -110,7 +110,8 @@ namespace Adapter
 			if (!PlayerPrefs.HasKey(m_ThemePropertyName))
 				throw new KeyNotFoundException("Theme name is not save");
 			string themeName = PlayerPrefs.GetString(m_ThemePropertyName);
-			SetTheme(m_Themes.Find(item => item.themeName == themeName) ?? m_DefaultTheme);
+			Theme theme = m_Themes.Find(item => item.themeName == themeName);
+			SetTheme(theme != null ? theme : m_DefaultTheme);
 		}
 		public bool SafeLoadTheme()
 		{
@@ -161,7 +162,8 @@ namespace Adapter
 			if (!PlayerPrefs.HasKey(m_LanguagePropertyName))
 				throw new KeyNotFoundException("Language code is not save");
 			SystemLanguage languageCode = (SystemLanguage)PlayerPrefs.GetInt(m_LanguagePropertyName);
-			SetLanguage(m_Languages.Find(item => item.languageCode == languageCode) ?? m_DefaultLanguage);
+			Language language = m_Languages.Find(item => item.languageCode == languageCode);
+			SetLanguage(language != null ? language : m_DefaultLanguage);
 		}
 		public bool SafeLoadLanguage()
 		{

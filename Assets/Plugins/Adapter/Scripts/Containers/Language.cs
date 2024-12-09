@@ -8,38 +8,23 @@ namespace Adapter.Containers
 	[CreateAssetMenu(menuName = "Adapter/Container/Language", fileName = "New Language", order = 1)]
 	public class Language : ScriptableContainer
 	{
-		public Language(SystemLanguage languageCode) => m_LanguageCode = languageCode;
-
-		public Language(SystemLanguage languageCode, List<Container<string, Translation>> translations) : this(languageCode) => m_Translations = translations;
-		public Language(SystemLanguage languageCode, List<Container<string, Document>> documents, List<Container<string, Image>> images, List<Container<string, Audio>> audios, List<Container<string, Video>> videos) : this(languageCode)
-		{
-			m_Documents = documents;
-			m_Images = images;
-			m_Audios = audios;
-			m_Videos = videos;
-		}
-
-		public Language(SystemLanguage languageCode, List<Container<string, Translation>> translations, List<Container<string, Document>> documents, List<Container<string, Image>> images, List<Container<string, Audio>> audios, List<Container<string, Video>> videos) : this(languageCode, documents, images, audios, videos) => m_Translations = translations;
-
-
-
 		[SerializeField] private SystemLanguage m_LanguageCode = SystemLanguage.Unknown;
 
-		[SerializeField] private List<Container<string, Translation>> m_Translations = new List<Container<string, Translation>>();
+		[SerializeField] private List<Container<string, Translation>> m_Translations;
 
-		[SerializeField] private List<Container<string, Document>> m_Documents = new List<Container<string, Document>>();
-		[SerializeField] private List<Container<string, Image>> m_Images = new List<Container<string, Image>>();
-		[SerializeField] private List<Container<string, Audio>> m_Audios = new List<Container<string, Audio>>();
-		[SerializeField] private List<Container<string, Video>> m_Videos = new List<Container<string, Video>>();
+		[SerializeField] private List<Container<string, Document>> m_Documents;
+		[SerializeField] private List<Container<string, Image>> m_Images;
+		[SerializeField] private List<Container<string, Audio>> m_Audios;
+		[SerializeField] private List<Container<string, Video>> m_Videos;
 
 		public SystemLanguage languageCode => m_LanguageCode;
 
-		public List<Container<string, Translation>> translations => m_Translations;
+		public List<Container<string, Translation>> translations { get => m_Translations; set => m_Translations = value ?? new List<Container<string, Translation>>(); }
 
-		public List<Container<string, Document>> documents => m_Documents;
-		public List<Container<string, Image>> images => m_Images;
-		public List<Container<string, Audio>> audios => m_Audios;
-		public List<Container<string, Video>> videos => m_Videos;
+		public List<Container<string, Document>> documents { get => m_Documents; set => m_Documents = value ?? new List<Container<string, Document>>(); }
+		public List<Container<string, Image>> images { get => m_Images; set => m_Images = value ?? new List<Container<string, Image>>(); }
+		public List<Container<string, Audio>> audios { get => m_Audios; set => m_Audios = value ?? new List<Container<string, Audio>>(); }
+		public List<Container<string, Video>> videos { get => m_Videos; set => m_Videos = value ?? new List<Container<string, Video>>(); }
 
 
 

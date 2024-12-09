@@ -84,7 +84,7 @@ namespace Adapter.Elements.Editor
 		{
 			titleContent = new GUIContent("Button Creation");
 			minSize = maxSize = new Vector2(320, 640);
-			m_RectTransform = Selection.activeGameObject?.GetComponent<RectTransform>();
+			m_RectTransform = Selection.activeGameObject != null ? Selection.activeGameObject.GetComponent<RectTransform>() : null;
 
 			m_ButtonNameValue = "Adaptive Button";
 			m_TextNameValue = "Adaptive Text";
@@ -171,7 +171,7 @@ namespace Adapter.Elements.Editor
 			{
 				GameObject creation = new GameObject(m_ButtonNameValue);
 				RectTransform transform = creation.AddComponent<RectTransform>();
-				transform.position = m_RectTransform?.TransformPoint(m_PositionValue) ?? context.transform.TransformPoint(m_PositionValue);
+				transform.position = m_RectTransform != null ? m_RectTransform.TransformPoint(m_PositionValue) : context.transform.TransformPoint(m_PositionValue);
 				transform.sizeDelta = m_SizeValue;
 				transform.rotation = Quaternion.Euler(m_RotationValue);
 				Image image = creation.AddComponent<Image>();
@@ -204,7 +204,8 @@ namespace Adapter.Elements.Editor
 				text.alignment = m_FontAlignmentValue;
 				text.color = m_FontColorValue;
 				innerCreation.transform.SetParent(creation.transform, false);
-				creation.transform.SetParent(m_Context?.transform);
+				if (m_Context != null)
+					creation.transform.SetParent(m_Context.transform);
 				creation.transform.localScale = Vector3.one;
 				Close();
 			}

@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Adapter.Elements.Editor
@@ -19,14 +20,13 @@ namespace Adapter.Elements.Editor
 		{
 			T window = EditorWindow.CreateWindow<T>(typeof(T));
 			window.context = SearchCanvas(command.context as GameObject);
+			SearchEventSystem();
 			window.Show();
 		}
 
 		private static GameObject SearchCanvas(GameObject context)
 		{
-			if (context == null)
-				return CanvasOnScene();
-			GameObject gameObject = CanvasInParent(context);
+			GameObject gameObject = context == null ? CanvasOnScene() : CanvasInParent(context);
 			if (gameObject != null)
 				return gameObject;
 			return CreateCanvas(context);
@@ -34,7 +34,7 @@ namespace Adapter.Elements.Editor
 
 		private static GameObject CanvasOnScene()
 		{
-			if (Object.FindObjectsOfType<Canvas>()[^1] is Canvas canvas)
+			if (Object.FindObjectOfType<Canvas>() is Canvas canvas)
 				return canvas.gameObject;
 			return null;
 		}
@@ -57,6 +57,22 @@ namespace Adapter.Elements.Editor
 			gameObject.AddComponent<GraphicRaycaster>();
 			if (context != null)
 				gameObject.transform.SetParent(context.transform, false);
+			return gameObject;
+		}
+
+		private static GameObject SearchEventSystem()
+		{
+			if (Object.FindObjectOfType<EventSystem>() is EventSystem eventSystem)
+				return eventSystem.gameObject;
+			return CreateEventSystem();
+		}
+
+		private static GameObject CreateEventSystem()
+		{
+			GameObject gameObject = new GameObject("EventSystem");
+			gameObject.AddComponent<EventSystem>();
+			gameObject.AddComponent<StandaloneInputModule>();
+			gameObject.AddComponent<BaseInput>();
 			return gameObject;
 		}
 	}

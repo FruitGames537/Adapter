@@ -1,5 +1,4 @@
 using Adapter.Containers;
-using Adapter.Elements;
 using System;
 using UnityEngine;
 using UI = UnityEngine.UI;
@@ -45,7 +44,7 @@ namespace Adapter.Styles
 		private Sprite Apply(Setting setting, Variation<Sprite, string> value)
 		{
 			if (setting.currentTheme != null)
-				return value.variation is VariationType.First ? value.firstValue : setting.currentTheme.GetSprite(value.secondValue);
+				return value.variation is VariationType.First ? value.firstValue : value.variation is VariationType.Second ? setting.currentTheme.GetSprite(value.secondValue) : null;
 			return null;
 		}
 

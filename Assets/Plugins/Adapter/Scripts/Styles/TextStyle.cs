@@ -31,7 +31,7 @@ namespace Adapter.Styles
 
 		public TextStyle(Font font, List<Extra> extra, FontStyle style, int size, int spacing, TextAnchor alignment, Variation<Color, string> color)
 		{
-			m_Font = font ?? null;
+			m_Font = font;
 			m_Extra = extra ?? new List<Extra>();
 			m_Style = style;
 			m_Size = size;
@@ -80,7 +80,7 @@ namespace Adapter.Styles
 			text.lineSpacing = m_Spacing;
 			text.alignment = m_Alignment;
 			if (text.setting != null && text.setting.currentTheme != null)
-				text.color = m_Color.variation is VariationType.First ? m_Color.firstValue : text.setting.currentTheme.GetColor(m_Color.secondValue);
+				text.color = m_Color.variation is VariationType.First ? m_Color.firstValue : m_Color.variation is VariationType.Second ? text.setting.currentTheme.GetColor(m_Color.secondValue) : Color.black;
 			else
 				text.color = Color.black;
 		}
