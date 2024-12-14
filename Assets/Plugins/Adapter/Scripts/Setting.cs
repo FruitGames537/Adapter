@@ -10,14 +10,14 @@ namespace Adapter
 	public class Setting : ScriptableObject
 	{
 		[Header("Language")]
-		[SerializeField] private string m_LanguagePropertyName;
+		[SerializeField] private string m_LanguageProperty;
 		[SerializeField] private Language m_DefaultLanguage;
 		[SerializeField] private List<Language> m_Languages;
 
 		private SystemLanguage? m_LanguageCode;
 		private Language m_Language;
 
-		public string languagePropertyName { get => m_LanguagePropertyName; set => m_LanguagePropertyName = value; }
+		public string languageProperty { get => m_LanguageProperty; set => m_LanguageProperty = value; }
 		public Language defaultLanguage { get => m_DefaultLanguage; set => m_DefaultLanguage = value; }
 
 		public SystemLanguage? languageCode => m_LanguageCode;
@@ -31,7 +31,7 @@ namespace Adapter
 		public event LanguageChangedHandler LanguageChanged;
 
 		[Header("Theme")]
-		[SerializeField] private string m_ThemePropertyName;
+		[SerializeField] private string m_ThemeProperty;
 		[SerializeField] private Theme m_DefaultTheme;
 		[SerializeField] private Theme m_LightTheme;
 		[SerializeField] private Theme m_DarkTheme;
@@ -40,7 +40,7 @@ namespace Adapter
 		private string m_ThemeName;
 		private Theme m_Theme;
 
-		public string themePropertyName { get => m_ThemePropertyName; set => m_ThemePropertyName = value; }
+		public string themeProperty { get => m_ThemeProperty; set => m_ThemeProperty = value; }
 		public Theme defaultTheme { get => m_DefaultTheme; set => m_DefaultTheme = value; }
 		public Theme lightTheme { get => m_LightTheme; set => m_LightTheme = value; }
 		public Theme darkTheme { get => m_DarkTheme; set => m_DarkTheme = value; }
@@ -94,7 +94,7 @@ namespace Adapter
 		{
 			if (!m_LanguageCode.HasValue)
 				throw new KeyNotFoundException("Language code is not set");
-			PlayerPrefs.SetInt(m_LanguagePropertyName, (int)m_LanguageCode.Value);
+			PlayerPrefs.SetInt(m_LanguageProperty, (int)m_LanguageCode.Value);
 			PlayerPrefs.Save();
 		}
 		public bool SafeSaveLanguage()
@@ -105,15 +105,15 @@ namespace Adapter
 		}
 		public void LoadLanguage()
 		{
-			if (!PlayerPrefs.HasKey(m_LanguagePropertyName))
+			if (!PlayerPrefs.HasKey(m_LanguageProperty))
 				throw new KeyNotFoundException("Language code is not save");
-			SystemLanguage languageCode = (SystemLanguage)PlayerPrefs.GetInt(m_LanguagePropertyName);
+			SystemLanguage languageCode = (SystemLanguage)PlayerPrefs.GetInt(m_LanguageProperty);
 			Language language = m_Languages.Find(item => item.languageCode == languageCode);
 			SetLanguage(language != null ? language : m_DefaultLanguage);
 		}
 		public bool SafeLoadLanguage()
 		{
-			if (PlayerPrefs.HasKey(m_LanguagePropertyName) is bool state && state)
+			if (PlayerPrefs.HasKey(m_LanguageProperty) is bool state && state)
 				LoadLanguage();
 			return state;
 		}
@@ -148,7 +148,7 @@ namespace Adapter
 		{
 			if (m_ThemeName == null)
 				throw new KeyNotFoundException("Theme name is not set");
-			PlayerPrefs.SetString(m_ThemePropertyName, m_ThemeName);
+			PlayerPrefs.SetString(m_ThemeProperty, m_ThemeName);
 			PlayerPrefs.Save();
 		}
 		public bool SafeSaveTheme()
@@ -159,15 +159,15 @@ namespace Adapter
 		}
 		public void LoadTheme()
 		{
-			if (!PlayerPrefs.HasKey(m_ThemePropertyName))
+			if (!PlayerPrefs.HasKey(m_ThemeProperty))
 				throw new KeyNotFoundException("Theme name is not save");
-			string themeName = PlayerPrefs.GetString(m_ThemePropertyName);
+			string themeName = PlayerPrefs.GetString(m_ThemeProperty);
 			Theme theme = m_Themes.Find(item => item.themeName == themeName);
 			SetTheme(theme != null ? theme : m_DefaultTheme);
 		}
 		public bool SafeLoadTheme()
 		{
-			if (PlayerPrefs.HasKey(m_ThemePropertyName) is bool state && state)
+			if (PlayerPrefs.HasKey(m_ThemeProperty) is bool state && state)
 				LoadTheme();
 			return state;
 		}
