@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Adapter.Containers
 {
-	[CreateAssetMenu(menuName = "Adapter/Container/Theme", fileName = "New Theme", order = 2)]
+    [CreateAssetMenu(menuName = "Adapter/Container/Theme", fileName = "New Theme", order = 2)]
 	public class Theme : ScriptableContainer
 	{
 		[SerializeField] private string m_ThemeName = string.Empty;
@@ -55,13 +55,13 @@ namespace Adapter.Containers
 			else if (typeof(T) == typeof(ButtonStyle))
 				return GetStore(m_ButtonStyles as List<Container<string, T>>, path, safe: safe);
 			else if (typeof(T) == typeof(InputStyle))
-				return GetStore(m_ButtonStyles as List<Container<string, T>>, path, safe: safe);
+				return GetStore(m_InputStyles as List<Container<string, T>>, path, safe: safe);
 			else if (typeof(T) == typeof(ToggleStyle))
-				return GetStore(m_ButtonStyles as List<Container<string, T>>, path, safe: safe);
+				return GetStore(m_ToggleStyles as List<Container<string, T>>, path, safe: safe);
 			else if (typeof(T) == typeof(SliderStyle))
-				return GetStore(m_ButtonStyles as List<Container<string, T>>, path, safe: safe);
+				return GetStore(m_SliderStyles as List<Container<string, T>>, path, safe: safe);
 			else if (typeof(T) == typeof(DropdownStyle))
-				return GetStore(m_ButtonStyles as List<Container<string, T>>, path, safe: safe);
+				return GetStore(m_DropdownStyles as List<Container<string, T>>, path, safe: safe);
 			throw new NotImplementedException($"Style type argument is not supported: \"{typeof(T)}\"");
 		}
 		public bool SetStyle<T>(string path, T style, bool safe = false) where T : class
@@ -73,13 +73,13 @@ namespace Adapter.Containers
 			else if (typeof(T) == typeof(ButtonStyle))
 				return SetStore(m_ButtonStyles as List<Container<string, T>>, path, style, safe: safe);
 			else if (typeof(T) == typeof(InputStyle))
-				return SetStore(m_ButtonStyles as List<Container<string, T>>, path, style, safe: safe);
+				return SetStore(m_InputStyles as List<Container<string, T>>, path, style, safe: safe);
 			else if (typeof(T) == typeof(ToggleStyle))
-				return SetStore(m_ButtonStyles as List<Container<string, T>>, path, style, safe: safe);
+				return SetStore(m_ToggleStyles as List<Container<string, T>>, path, style, safe: safe);
 			else if (typeof(T) == typeof(SliderStyle))
-				return SetStore(m_ButtonStyles as List<Container<string, T>>, path, style, safe: safe);
+				return SetStore(m_SliderStyles as List<Container<string, T>>, path, style, safe: safe);
 			else if (typeof(T) == typeof(DropdownStyle))
-				return SetStore(m_ButtonStyles as List<Container<string, T>>, path, style, safe: safe);
+				return SetStore(m_DropdownStyles as List<Container<string, T>>, path, style, safe: safe);
 			throw new NotImplementedException($"Style type argument is not supported: \"{typeof(T)}\"");
 		}
 		public bool SearchStyle<T>(string path, out T style) where T : class
@@ -91,13 +91,13 @@ namespace Adapter.Containers
 			else if (typeof(T) == typeof(ButtonStyle))
 				return SearchStore(m_ButtonStyles as List<Container<string, T>>, path, out style);
 			else if (typeof(T) == typeof(InputStyle))
-				return SearchStore(m_ButtonStyles as List<Container<string, T>>, path, out style);
+				return SearchStore(m_InputStyles as List<Container<string, T>>, path, out style);
 			else if (typeof(T) == typeof(ToggleStyle))
-				return SearchStore(m_ButtonStyles as List<Container<string, T>>, path, out style);
+				return SearchStore(m_ToggleStyles as List<Container<string, T>>, path, out style);
 			else if (typeof(T) == typeof(SliderStyle))
-				return SearchStore(m_ButtonStyles as List<Container<string, T>>, path, out style);
+				return SearchStore(m_SliderStyles as List<Container<string, T>>, path, out style);
 			else if (typeof(T) == typeof(DropdownStyle))
-				return SearchStore(m_ButtonStyles as List<Container<string, T>>, path, out style);
+				return SearchStore(m_DropdownStyles as List<Container<string, T>>, path, out style);
 			throw new NotImplementedException($"Style type argument is not supported: \"{typeof(T)}\"");
 		}
 	}
