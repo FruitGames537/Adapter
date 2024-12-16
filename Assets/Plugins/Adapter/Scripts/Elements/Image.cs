@@ -1,10 +1,11 @@
 using Adapter.Styles;
 using UnityEngine;
+using UI = UnityEngine.UI;
 
 namespace Adapter.Elements
 {
 	[AddComponentMenu("UI/Adaptive/Image", order: 2)]
-	public class Image : UnityEngine.UI.Image, IElement
+	public class Image : UI.Image, IElement
 	{
 		[SerializeField] protected Setting m_Setting;
 		[SerializeField] protected string m_Style;
@@ -14,14 +15,13 @@ namespace Adapter.Elements
 
 
 
-		public void Modify()
+		protected override void Start()
 		{
-			if (m_Setting != null && m_Setting.currentTheme != null && m_Setting.currentTheme.SearchStyle(m_Style, out ImageStyle imageStyle))
-				imageStyle.Apply(this);
+			base.Start();
+
+			Modify();
 		}
 		
-		private void OnThemeChanged(string themeName, bool nameIsEmpty) => Modify();
-
 		protected override void OnEnable()
 		{
 			base.OnEnable();
@@ -37,11 +37,12 @@ namespace Adapter.Elements
 				m_Setting.ThemeChanged -= OnThemeChanged;
 		}
 
-		protected override void Start()
-		{
-			base.Start();
+		private void OnThemeChanged(string themeName, bool nameIsEmpty) => Modify();
 
-			Modify();
+		public void Modify()
+		{
+			if (m_Setting != null && m_Setting.currentTheme != null && m_Setting.currentTheme.SearchStyle(m_Style, out ImageStyle imageStyle))
+				imageStyle.Apply(this);
 		}
 	}
 }

@@ -4,8 +4,8 @@ using UI = UnityEngine.UI;
 
 namespace Adapter.Elements
 {
-	[AddComponentMenu("UI/Adaptive/Button", order: 3)]
-	public class Button : UI.Button, IElement
+	[AddComponentMenu("UI/Adaptive/Slider", order: 6)]
+	public class Slider : UI.Slider, IElement
 	{
 		[SerializeField] protected Setting m_Setting;
 		[SerializeField] protected string m_Style;
@@ -38,11 +38,11 @@ namespace Adapter.Elements
 		}
 
 		private void OnThemeChanged(string themeName, bool nameIsEmpty) => Modify();
-
+		
 		public void Modify()
 		{
-			if (m_Setting != null && m_Setting.currentLanguage != null && m_Setting.currentTheme.SearchStyle(m_Style, out ButtonStyle buttonStyle))
-				buttonStyle.Apply(this);
+			if (m_Setting != null && m_Setting.currentLanguage != null && m_Setting.currentTheme.SearchStyle(m_Style, out SliderStyle sliderStyle))
+				sliderStyle.Apply(this);
 		}
 	}
 }

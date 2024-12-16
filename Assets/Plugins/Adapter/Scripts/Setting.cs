@@ -17,6 +17,8 @@ namespace Adapter
 		private SystemLanguage? m_LanguageCode;
 		private Language m_Language;
 
+		public static SystemLanguage systemLanguage => Application.systemLanguage;
+
 		public string languageProperty { get => m_LanguageProperty; set => m_LanguageProperty = value; }
 		public Language defaultLanguage { get => m_DefaultLanguage; set => m_DefaultLanguage = value; }
 
@@ -39,6 +41,8 @@ namespace Adapter
 
 		private string m_ThemeName;
 		private Theme m_Theme;
+
+		public static bool? darkMode => DarkMode.darkMode;
 
 		public string themeProperty { get => m_ThemeProperty; set => m_ThemeProperty = value; }
 		public Theme defaultTheme { get => m_DefaultTheme; set => m_DefaultTheme = value; }

@@ -3,8 +3,8 @@ using UI = UnityEditor.UI;
 
 namespace Adapter.Elements.Editor
 {
-	[CustomEditor(typeof(Button))]
-	public class ButtonEditor : UI.ButtonEditor
+	[CustomEditor(typeof(Slider))]
+	public class SliderEditor : UI.SliderEditor
 	{
 		private SerializedProperty m_SettingProperty;
 		private SerializedProperty m_StyleProperty;

@@ -12,6 +12,7 @@ namespace Adapter.Containers
 
 		[SerializeField] private List<Container<string, Translation>> m_Translations;
 
+		[SerializeField] private List<Container<string, Asset>> m_Assets;
 		[SerializeField] private List<Container<string, Document>> m_Documents;
 		[SerializeField] private List<Container<string, Image>> m_Images;
 		[SerializeField] private List<Container<string, Audio>> m_Audios;
@@ -21,6 +22,7 @@ namespace Adapter.Containers
 
 		public List<Container<string, Translation>> translations { get => m_Translations; set => m_Translations = value ?? new List<Container<string, Translation>>(); }
 
+		public List<Container<string, Asset>> assets { get => m_Assets; set => m_Assets = value ?? new List<Container<string, Asset>>(); }
 		public List<Container<string, Document>> documents { get => m_Documents; set => m_Documents = value ?? new List<Container<string, Document>>(); }
 		public List<Container<string, Image>> images { get => m_Images; set => m_Images = value ?? new List<Container<string, Image>>(); }
 		public List<Container<string, Audio>> audios { get => m_Audios; set => m_Audios = value ?? new List<Container<string, Audio>>(); }
@@ -30,6 +32,9 @@ namespace Adapter.Containers
 
 		public Translation GetTranslation(string path, bool safe = false) => GetStore(m_Translations, path, safe: safe);
 		public bool SearchTranslation(string path, out Translation translation) => SearchStore(m_Translations, path, out translation);
+
+		public Asset GetAsset(string path, bool safe = false) => GetStore(m_Assets, path, safe: safe);
+		public bool SearchAsset(string path, out Asset asset) => SearchStore(m_Assets, path, out asset);
 
 		public Document GetDocument(string path, bool safe = false) => GetStore(m_Documents, path, safe: safe);
 		public bool SeatchDocument(string path, out Document document) => SearchStore(m_Documents, path, out document);

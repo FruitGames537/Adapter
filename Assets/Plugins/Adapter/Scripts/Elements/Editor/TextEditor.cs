@@ -1,9 +1,10 @@
 using UnityEditor;
+using UI = UnityEditor.UI;
 
 namespace Adapter.Elements.Editor
 {
 	[CustomEditor(typeof(Text))]
-	public class TextEditor : UnityEditor.UI.TextEditor
+	public class TextEditor : UI.TextEditor
 	{
 		private SerializedProperty m_SettingProperty;
 

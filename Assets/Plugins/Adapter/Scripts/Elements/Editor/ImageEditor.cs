@@ -1,9 +1,10 @@
 using UnityEditor;
+using UI = UnityEditor.UI;
 
 namespace Adapter.Elements.Editor
 {
 	[CustomEditor(typeof(Image))]
-	public class ImageEditor : UnityEditor.UI.ImageEditor
+	public class ImageEditor : UI.ImageEditor
 	{
 		private SerializedProperty m_SettingProperty;
 		private SerializedProperty m_StyleProperty;

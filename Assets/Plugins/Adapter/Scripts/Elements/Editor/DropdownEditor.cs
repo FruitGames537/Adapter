@@ -3,8 +3,8 @@ using UI = UnityEditor.UI;
 
 namespace Adapter.Elements.Editor
 {
-	[CustomEditor(typeof(Button))]
-	public class ButtonEditor : UI.ButtonEditor
+	[CustomEditor(typeof(Dropdown))]
+	public class DropdownEditor : UI.DropdownEditor
 	{
 		private SerializedProperty m_SettingProperty;
 		private SerializedProperty m_StyleProperty;

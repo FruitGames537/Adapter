@@ -3,8 +3,8 @@ using UI = UnityEditor.UI;
 
 namespace Adapter.Elements.Editor
 {
-	[CustomEditor(typeof(Button))]
-	public class ButtonEditor : UI.ButtonEditor
+	[CustomEditor(typeof(Input))]
+	public class InputEditor : UI.InputFieldEditor
 	{
 		private SerializedProperty m_SettingProperty;
 		private SerializedProperty m_StyleProperty;

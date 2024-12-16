@@ -4,8 +4,8 @@ using UI = UnityEngine.UI;
 
 namespace Adapter.Elements
 {
-	[AddComponentMenu("UI/Adaptive/Button", order: 3)]
-	public class Button : UI.Button, IElement
+	[AddComponentMenu("UI/Adaptive/Input", order: 4)]
+	public class Input : UI.InputField, IElement
 	{
 		[SerializeField] protected Setting m_Setting;
 		[SerializeField] protected string m_Style;
@@ -41,8 +41,8 @@ namespace Adapter.Elements
 
 		public void Modify()
 		{
-			if (m_Setting != null && m_Setting.currentLanguage != null && m_Setting.currentTheme.SearchStyle(m_Style, out ButtonStyle buttonStyle))
-				buttonStyle.Apply(this);
+			if (m_Setting != null && m_Setting.currentLanguage != null && m_Setting.currentTheme.SearchStyle(m_Style, out InputStyle inputStyle))
+				inputStyle.Apply(this);
 		}
 	}
 }
