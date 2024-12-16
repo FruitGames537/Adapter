@@ -17,7 +17,7 @@ namespace Adapter.Elements
 		public Setting setting { get => m_Setting; set => m_Setting = value; }
 
 		public string style { get => m_Style; set => m_Style = value; }
-		public List<string> translation { get => m_Translation; set => m_Translation = value; }
+		public List<string> translation { get => m_Translation; set => m_Translation = value ?? new List<string>(); }
 
 
 
@@ -56,14 +56,18 @@ namespace Adapter.Elements
 		{
 			if (m_Setting != null && m_Setting.currentTheme != null && m_Setting.currentTheme.SearchStyle(m_Style, out DropdownStyle dropdownStyle))
 				dropdownStyle.Apply(this);
+			if (m_Setting != null && m_Setting.currentLanguage != null)
+				UpdateDropdown();
+		}
+		private void UpdateDropdown()
+		{
 			ClearOptions();
 			List<string> option = new List<string>();
-			if (m_Setting != null && m_Setting.currentLanguage != null)
-				foreach (string item in m_Translation)
-					if (m_Setting.currentLanguage.SearchTranslation(item, out Translation translation))
-						option.Add(translation);
-					else
-						option.Add(item);
+			foreach (string translation in m_Translation)
+				if (m_Setting.currentLanguage.SearchTranslation(translation, out Translation search))
+					option.Add(search.translation);
+				else
+					option.Add(translation);
 			AddOptions(option);
 		}
 	}

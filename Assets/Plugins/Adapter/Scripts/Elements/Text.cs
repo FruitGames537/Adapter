@@ -55,8 +55,15 @@ namespace Adapter.Elements
 		{
 			if (m_Setting != null && m_Setting.currentTheme != null && m_Setting.currentTheme.SearchStyle(m_Style, out TextStyle textStyle))
 				textStyle.Apply(this, m_Setting.languageCode);
-			if (m_Setting != null && m_Setting.currentLanguage != null && m_Setting.currentLanguage.SearchTranslation(m_Translation, out Translation translation))
-				text = translation;
+			if (m_Setting != null && m_Setting.currentLanguage != null)
+				UpdateText();
+		}
+		private void UpdateText()
+		{
+			string translation = m_Translation;
+			if (m_Setting.currentLanguage.SearchTranslation(m_Translation, out Translation search))
+				translation = search.translation;
+			text = translation;
 		}
 	}
 }
