@@ -39,9 +39,11 @@ namespace Adapter.Containers
 
 
 		public Color GetColor(string path, bool safe = false) => GetStore(m_Colors, path, safe: safe);
+		public bool SetColor(string path, Color color, bool safe = false) => SetStore(m_Colors, path, color, safe: safe);
 		public bool SearchColor(string path, out Color color) => SearchStore(m_Colors, path, out color);
 
 		public Sprite GetSprite(string path, bool safe = false) => GetStore(m_Sprites, path, safe: safe);
+		public bool SetSprite(string path, Sprite sprite, bool safe = false) => SetStore(m_Sprites, path, sprite, safe: safe);
 		public bool SeatchSprite(string path, out Sprite sprite) => SearchStore(m_Sprites, path, out sprite);
 
 		public T GetStyle<T>(string path, bool safe = false) where T : class
@@ -60,6 +62,24 @@ namespace Adapter.Containers
 				return GetStore(m_ButtonStyles as List<Container<string, T>>, path, safe: safe);
 			else if (typeof(T) == typeof(DropdownStyle))
 				return GetStore(m_ButtonStyles as List<Container<string, T>>, path, safe: safe);
+			throw new NotImplementedException($"Style type argument is not supported: \"{typeof(T)}\"");
+		}
+		public bool SetStyle<T>(string path, T style, bool safe = false) where T : class
+		{
+			if (typeof(T) == typeof(TextStyle))
+				return SetStore(m_TextStyles as List<Container<string, T>>, path, style, safe: safe);
+			else if (typeof(T) == typeof(ImageStyle))
+				return SetStore(m_ImageStyles as List<Container<string, T>>, path, style, safe: safe);
+			else if (typeof(T) == typeof(ButtonStyle))
+				return SetStore(m_ButtonStyles as List<Container<string, T>>, path, style, safe: safe);
+			else if (typeof(T) == typeof(InputStyle))
+				return SetStore(m_ButtonStyles as List<Container<string, T>>, path, style, safe: safe);
+			else if (typeof(T) == typeof(ToggleStyle))
+				return SetStore(m_ButtonStyles as List<Container<string, T>>, path, style, safe: safe);
+			else if (typeof(T) == typeof(SliderStyle))
+				return SetStore(m_ButtonStyles as List<Container<string, T>>, path, style, safe: safe);
+			else if (typeof(T) == typeof(DropdownStyle))
+				return SetStore(m_ButtonStyles as List<Container<string, T>>, path, style, safe: safe);
 			throw new NotImplementedException($"Style type argument is not supported: \"{typeof(T)}\"");
 		}
 		public bool SearchStyle<T>(string path, out T style) where T : class
