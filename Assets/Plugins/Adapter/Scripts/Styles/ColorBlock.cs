@@ -39,7 +39,7 @@ namespace Adapter.Styles
 		public float colorMultiplier { get => m_ColorMultiplier; set => m_ColorMultiplier = value; }
 		public float fadeDuration { get => m_FadeDuration; set => m_FadeDuration = value; }
 		
-		public static readonly ColorBlock defaultColorBlock = UI.ColorBlock.defaultColorBlock;
+		[NonSerialized] public static readonly ColorBlock defaultColorBlock = UI.ColorBlock.defaultColorBlock;
 
 
 
